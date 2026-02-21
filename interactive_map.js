@@ -676,6 +676,16 @@
     function fmtWaterLevel(ft) {
       return ft === null || !Number.isFinite(Number(ft)) ? "NA" : Number(ft).toFixed(1);
     }
+    function calcMedian(nums) {
+      const valid = nums
+        .map(n => Number(n))
+        .filter(n => Number.isFinite(n))
+        .sort((a, b) => a - b);
+      if (!valid.length) return null;
+      const mid = Math.floor(valid.length / 2);
+      if (valid.length % 2 === 0) return (valid[mid - 1] + valid[mid]) / 2;
+      return valid[mid];
+    }
     function buildWellHistoryPoints(records) {
       const byMonth = new Map();
       for (const r of records) {
@@ -727,6 +737,9 @@
     }
     function buildWellPopupHtml(historyObj) {
       const latest = historyObj.latestRecord;
+      const markerModeText = historyObj.markerMode === "median_all_months"
+        ? `Marker color uses median of all available months: ${escapeHtml(fmtWaterLevel(historyObj.markerValueFt))} ft`
+        : `Marker color uses selected month value: ${escapeHtml(fmtWaterLevel(historyObj.markerValueFt))} ft`;
       const rows = historyObj.points.map(p => {
         const isActive = activeMonth !== "ALL" && p.monthKey === activeMonth;
         return `<tr${isActive ? ' style="background:#fff7ed"' : ""}>
@@ -740,6 +753,7 @@
         <div class="uwbe-popup-title">Well: ${escapeHtml(historyObj.wellId || "NA")}</div>
         <div><b>Park:</b> ${escapeHtml(historyObj.parkName || "NA")}</div>
         <div><b>Latest:</b> ${escapeHtml(fmtWaterLevel(latest ? latest.waterLevelFt : null))} ft on ${escapeHtml(latest ? (latest.date || "NA") : "NA")}</div>
+        <div class="uwbe-popup-foot">${markerModeText}</div>
         ${activeMonthNote}
         ${getWellHistorySparkSvg(historyObj.points)}
         <div class="uwbe-popup-sep"></div>
@@ -1322,7 +1336,7 @@
             `<div class="uwbe-popup-title">Well: ${escapeHtml(p.wellId || "NA")}</div>` +
             `<div><b>Park:</b> ${escapeHtml(p.parkName || "NA")}</div>` +
             `<div><b>Date:</b> ${escapeHtml(p.date || "NA")}</div>` +
-            `<div><b>Water level:</b> ${escapeHtml(p.waterLevelFt || "NA")} ft</div>` +
+            `<div><b>${escapeHtml(p.waterLevelLabel || "Water level")}:</b> ${escapeHtml(p.waterLevelFt || "NA")} ft</div>` +
             `<div><b>Band:</b> ${escapeHtml(p.waterBand || "NA")}</div>` +
             `</div>`
           ))
@@ -1430,6 +1444,7 @@
 
     function drawWellsForPark(park) {
       if (!mapReady) return;
+      const isAllMonthsMode = activeMonth === "ALL";
       const wellsVisible = filteredWellsForPark(park);
       const wellsAllMonths = filteredWellsForParkByMonth(park, "ALL");
       const groupsVisible = getWellGroups(wellsVisible);
@@ -1443,12 +1458,17 @@
         const allForGroup = groupsAllMonths.get(groupKey) || groupVisible;
         const points = buildWellHistoryPoints(allForGroup);
         const latestAll = getLatestRecord(allForGroup);
-        const band = getWaterLevelBand(rep.waterLevelFt);
+        const colorValueFt = isAllMonthsMode
+          ? calcMedian(allForGroup.map(r => r.waterLevelFt))
+          : rep.waterLevelFt;
+        const band = getWaterLevelBand(colorValueFt);
         visibleWellHistoryByKey.set(groupKey, {
           wellId: rep.wellId || "NA",
           parkName: rep.parkName || "NA",
           latestRecord: latestAll,
-          points
+          points,
+          markerMode: isAllMonthsMode ? "median_all_months" : "selected_month",
+          markerValueFt: colorValueFt
         });
         features.push({
           type: "Feature",
@@ -1457,10 +1477,11 @@
             wellHistoryKey: groupKey,
             wellId: rep.wellId || "NA",
             parkName: rep.parkName || "NA",
-            date: rep.date || "NA",
-            waterLevelFt: rep.waterLevelFt !== null ? rep.waterLevelFt.toFixed(1) : "NA",
+            date: isAllMonthsMode ? "All months" : (rep.date || "NA"),
+            waterLevelFt: colorValueFt !== null && Number.isFinite(Number(colorValueFt)) ? Number(colorValueFt).toFixed(1) : "NA",
             waterBand: band.label,
-            wellColor: band.color
+            wellColor: band.color,
+            waterLevelLabel: isAllMonthsMode ? "Median water level (all months)" : "Water level"
           }
         });
       }
