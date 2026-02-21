@@ -3,6 +3,7 @@
     window.__UWBE_SCRIPT_STARTED__ = true;
 
     const MASTER_WELL_FILE = "OBD_Continuous_Parks_Data.csv";
+    const BOREWELL_FILE = "UW-Phase_II-Combined_BW_Measurements.csv";
     const DONOR_COLOR_PALETTE = [
       "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b",
       "#e377c2", "#7f7f7f", "#bcbd22", "#17becf", "#ef4444", "#14b8a6",
@@ -13,6 +14,8 @@
     const CONT_MON_START_MONTH = "2025-08";
     const CONT_MON_END_MONTH = "2026-01";
     const CONT_MON_MIN_MONTHS = 3;
+    const BOREWELL_TREND_START_MONTH = "2025-10";
+    const BOREWELL_TREND_END_MONTH = "2026-01";
 
     // Defensive cleanup in case stale/raw text lands in map container.
     const mapEl = document.getElementById("map");
@@ -21,8 +24,9 @@
     function showFatalError(msg) {
       const errBox = document.getElementById("err");
       if (!errBox) return;
+      const pageName = window.location.pathname.split("/").pop() || "index.html";
       errBox.style.display = "block";
-      errBox.innerHTML = `${String(msg)}<br><span class="hint">Open via <code>http://localhost:8000/interactive_map.html</code> and hard refresh with <code>Ctrl+Shift+R</code>.</span>`;
+      errBox.innerHTML = `${String(msg)}<br><span class="hint">Open via <code>http://localhost:8000/${escapeHtml(pageName)}</code> and hard refresh with <code>Ctrl+Shift+R</code>.</span>`;
     }
     if (window.location.protocol === "file:") {
       showFatalError("This map cannot load CSV files from file:// paths.");
@@ -45,9 +49,11 @@
     const emptyFeatureCollection = { type: "FeatureCollection", features: [] };
     let parkHoverPopup = null;
     let wellPopup = null;
+    let borewellPopup = null;
     let trendChart = null;
     let mapReady = false;
     let visibleWellHistoryByKey = new Map();
+    let layerMode = "BOTH";
 
     let selectedParkKey = null;
     let activeMonth = "ALL";
@@ -60,13 +66,21 @@
 
     const state = {
       wells: [],
+      borewells: [],
       parks: new Map(),
       monthKeys: [],
       rainfallByMonth: new Map(),
       donorsAll: new Set(),
       donorDisplayByNorm: new Map(),
-      donorColorByNorm: new Map()
+      donorColorByNorm: new Map(),
+      borewellMonthKeys: []
     };
+    function isPercolationLayerVisible() {
+      return layerMode === "BOTH" || layerMode === "PERC_ONLY";
+    }
+    function isBorewellLayerVisible() {
+      return layerMode === "BOTH" || layerMode === "BORE_ONLY";
+    }
 
     function normalizeWellId(id) {
       return String(id || "").trim().toUpperCase();
@@ -79,6 +93,7 @@
       if (!s) return "OTHER";
       if (s.includes("koramangala") || s.includes("challaghatta") || s === "kc" || s === "kc valley") return "KC";
       if (s.includes("hebbal")) return "HEBBAL";
+      if (s.includes("bommanahalli")) return "KC";
       if (s.includes("vrishabhavathi") || s === "v valley" || s === "v") return "V";
       return "OTHER";
     }
@@ -127,6 +142,33 @@
         return row;
       });
     }
+    function parseCsvRows(text) {
+      return text.replace(/\r/g, "").split("\n").filter(Boolean).map(parseCsvLine);
+    }
+    function parseReportCsvByHeader(text, requiredHeaders) {
+      const rows = parseCsvRows(text);
+      if (!rows.length) return [];
+      let headerIdx = -1;
+      for (let i = 0; i < rows.length; i++) {
+        const rowNorm = rows[i].map(c => String(c || "").trim().toLowerCase());
+        const allFound = requiredHeaders.every(h => rowNorm.includes(String(h).trim().toLowerCase()));
+        if (allFound) {
+          headerIdx = i;
+          break;
+        }
+      }
+      if (headerIdx < 0) return [];
+      const headers = rows[headerIdx].map(h => String(h || "").trim());
+      const out = [];
+      for (let i = headerIdx + 1; i < rows.length; i++) {
+        const vals = rows[i];
+        if (!vals.some(v => String(v || "").trim())) continue;
+        const row = {};
+        headers.forEach((h, j) => row[h] = String(vals[j] || "").trim());
+        out.push(row);
+      }
+      return out;
+    }
 
     function toNum(x) {
       const s = String(x ?? "").trim();
@@ -143,6 +185,31 @@
         return `${yyyy}-${mm}`;
       }
       return null;
+    }
+    function parseBorewellDate(dateStr) {
+      const raw = String(dateStr || "").trim();
+      if (!raw) return null;
+      const normalized = raw
+        .replace(/\./g, ":")
+        .replace(/(\d)(AM|PM)$/i, "$1 $2")
+        .replace(/\s+/g, " ")
+        .replace(/\s+,/g, ",")
+        .trim();
+      const candidates = [
+        normalized,
+        normalized.replace(/,\s*/g, " "),
+        normalized.replace(/(\d{1,2}\s+[A-Za-z]{3}\s+\d{4}),\s*(\d{1,2}:\d{2}\s*[AP]M)/i, "$1 $2")
+      ];
+      for (const c of candidates) {
+        const d = new Date(c);
+        if (Number.isFinite(d.getTime())) return d;
+      }
+      return null;
+    }
+    function monthKeyFromBorewellDate(dateStr) {
+      const d = parseBorewellDate(dateStr);
+      if (!d) return null;
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
     }
 
     function monthLabel(key) {
@@ -190,6 +257,13 @@
       if (n > 0 && n <= 2) return { key: "b0_2", label: "0-2 ft", color: "#dc2626" };
       if (n > 2 && n <= 4) return { key: "b2_4", label: "2-4 ft", color: "#f59e0b" };
       return { key: "b4_plus", label: "4+ ft", color: "#60a5fa" };
+    }
+    function getBorewellDepthBand(ft) {
+      const n = Number(ft);
+      if (!Number.isFinite(n)) return { key: "na", label: "NA", color: "#94a3b8" };
+      if (n <= 30) return { key: "d0_30", label: "0-30 ft", color: "#16a34a" };
+      if (n <= 80) return { key: "d30_80", label: "30-80 ft", color: "#f59e0b" };
+      return { key: "d80_plus", label: "80+ ft", color: "#dc2626" };
     }
     function escapeHtml(s) {
       return String(s || "").replace(/[&<>"']/g, (ch) => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[ch]));
@@ -362,6 +436,62 @@
       state.parks.get(parkKey).wells.push(well);
       if (monthKey && !state.monthKeys.includes(monthKey)) state.monthKeys.push(monthKey);
     }
+    function normalizeBorewellId(id) {
+      return String(id || "").trim().toUpperCase();
+    }
+    function addBorewellRecord(row, sourceFile) {
+      const wellId = normalizeBorewellId(row["Well ID"]);
+      const zone = String(row["Zone/Valley"] || "").trim();
+      const valleyKey = valleyKeyFromText(zone);
+      const status = String(row["Borewell Monitoring Status"] || "").trim();
+      const remark = String(row["Remark"] || "").trim();
+      const dateRaw = String(row["Date and Time of Measurement"] || "").trim();
+      const monthKey = monthKeyFromBorewellDate(dateRaw);
+      const lat = toNum(row["Latitude"]);
+      const lon = toNum(row["Longitude"]);
+      const depthFt = toNum(row["Water Level from Ground Level (ft)"]);
+      if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+      if (!wellId && !monthKey) return;
+      const rec = {
+        wellId: wellId || `NO_ID_${lat.toFixed(5)}_${lon.toFixed(5)}`,
+        zone,
+        valleyKey,
+        status,
+        remark,
+        date: dateRaw,
+        monthKey,
+        lat,
+        lon,
+        depthFt,
+        sourceFile
+      };
+      state.borewells.push(rec);
+      if (monthKey && !state.borewellMonthKeys.includes(monthKey)) state.borewellMonthKeys.push(monthKey);
+      if (monthKey && !state.monthKeys.includes(monthKey)) state.monthKeys.push(monthKey);
+    }
+    function standardizeBorewellLocations() {
+      const byWell = new Map();
+      for (const b of state.borewells) {
+        const key = normalizeBorewellId(b.wellId);
+        if (!byWell.has(key)) byWell.set(key, []);
+        byWell.get(key).push(b);
+      }
+      for (const recs of byWell.values()) {
+        const pairCounts = new Map();
+        recs.forEach(r => {
+          if (!Number.isFinite(Number(r.lat)) || !Number.isFinite(Number(r.lon))) return;
+          const pairKey = `${Number(r.lat).toFixed(6)},${Number(r.lon).toFixed(6)}`;
+          pairCounts.set(pairKey, (pairCounts.get(pairKey) || 0) + 1);
+        });
+        if (!pairCounts.size) continue;
+        const bestPair = Array.from(pairCounts.entries()).sort((a, b) => b[1] - a[1])[0][0];
+        const [latStr, lonStr] = bestPair.split(",");
+        recs.forEach(r => {
+          r.lat = Number(latStr);
+          r.lon = Number(lonStr);
+        });
+      }
+    }
 
     async function loadWells() {
       const text = await loadText(MASTER_WELL_FILE);
@@ -373,6 +503,15 @@
       initDonorColorScale();
       state.monthKeys.sort();
       rebuildRainfallFromWellRows();
+    }
+    async function loadBorewells() {
+      const text = await loadText(BOREWELL_FILE);
+      const rows = parseReportCsvByHeader(text, ["Well ID", "Date and Time of Measurement", "Latitude", "Longitude", "Zone/Valley"]);
+      if (!rows.length) throw new Error(`No parsable rows found in ${BOREWELL_FILE}`);
+      rows.forEach(r => addBorewellRecord(r, BOREWELL_FILE));
+      standardizeBorewellLocations();
+      state.borewellMonthKeys.sort();
+      state.monthKeys.sort();
     }
 
     function standardizeWellLocations() {
@@ -639,6 +778,141 @@
     function getDrawableRepresentativeWells(wells) {
       return getRepresentativeWellRecords(wells).filter(isFiniteWellCoord);
     }
+    function selectedParkObject(overridePark) {
+      if (overridePark) return overridePark;
+      if (!selectedParkKey) return null;
+      return state.parks.get(selectedParkKey) || null;
+    }
+    function isNearPark(borewell, park, radiusKm = 2.0) {
+      if (!park) return true;
+      if (!Number.isFinite(Number(borewell.lat)) || !Number.isFinite(Number(borewell.lon))) return false;
+      if (!Number.isFinite(Number(park.parkLat)) || !Number.isFinite(Number(park.parkLon))) return false;
+      return distanceKm(Number(borewell.lat), Number(borewell.lon), Number(park.parkLat), Number(park.parkLon)) <= radiusKm;
+    }
+    function getBorewellScopeRecords(overridePark = null, ignoreMonth = false) {
+      const park = selectedParkObject(overridePark);
+      return state.borewells.filter(b => {
+        const valleyOk = valleyMatchesKey(b.valleyKey);
+        const monthOk = ignoreMonth ? true : (activeMonth === "ALL" || b.monthKey === activeMonth);
+        const parkOk = isNearPark(b, park);
+        return valleyOk && monthOk && parkOk;
+      });
+    }
+    function getLatestBorewellRecord(records) {
+      if (!records || !records.length) return null;
+      return records.slice().sort((a, b) => {
+        const ta = parseBorewellDate(a.date);
+        const tb = parseBorewellDate(b.date);
+        const va = ta ? ta.getTime() : -Infinity;
+        const vb = tb ? tb.getTime() : -Infinity;
+        return vb - va;
+      })[0];
+    }
+    function getDrawableBorewells(overridePark = null) {
+      const base = getBorewellScopeRecords(overridePark, true);
+      if (activeMonth !== "ALL") {
+        return base.filter(b => b.monthKey === activeMonth);
+      }
+      const byWell = new Map();
+      base.forEach(b => {
+        const key = normalizeBorewellId(b.wellId);
+        if (!byWell.has(key)) byWell.set(key, []);
+        byWell.get(key).push(b);
+      });
+      const latest = [];
+      for (const recs of byWell.values()) {
+        const one = getLatestBorewellRecord(recs);
+        if (one) latest.push(one);
+      }
+      return latest;
+    }
+    function renderBorewellImpact(scopeLabel, overridePark = null) {
+      const el = document.getElementById("borewellImpactWriteup");
+      if (!el) return;
+      const shown = getDrawableBorewells(overridePark);
+      const measuredShown = shown.filter(r => Number.isFinite(Number(r.depthFt)));
+      const avgShown = calcAvg(measuredShown.map(r => Number(r.depthFt)));
+      const allForTrend = getBorewellScopeRecords(overridePark, true).filter(r =>
+        r.monthKey &&
+        monthInRange(r.monthKey, BOREWELL_TREND_START_MONTH, BOREWELL_TREND_END_MONTH) &&
+        Number.isFinite(Number(r.depthFt))
+      );
+      const byWell = new Map();
+      allForTrend.forEach(r => {
+        const key = normalizeBorewellId(r.wellId);
+        if (!byWell.has(key)) byWell.set(key, []);
+        byWell.get(key).push(r);
+      });
+      const deltas = [];
+      for (const recs of byWell.values()) {
+        const sorted = recs.slice().sort((a, b) => {
+          const ta = parseBorewellDate(a.date);
+          const tb = parseBorewellDate(b.date);
+          const va = ta ? ta.getTime() : -Infinity;
+          const vb = tb ? tb.getTime() : -Infinity;
+          return va - vb;
+        });
+        const monthSet = new Set(sorted.map(r => r.monthKey).filter(Boolean));
+        if (monthSet.size < 2) continue;
+        const delta = Number(sorted[sorted.length - 1].depthFt) - Number(sorted[0].depthFt);
+        if (Number.isFinite(delta)) deltas.push(delta);
+      }
+      const improved = deltas.filter(d => d < -0.5).length;
+      const worsened = deltas.filter(d => d > 0.5).length;
+      const stable = deltas.filter(d => d >= -0.5 && d <= 0.5).length;
+      const medianDelta = deltas.length ? deltas.slice().sort((a, b) => a - b)[Math.floor(deltas.length / 2)] : null;
+      const story = !deltas.length
+        ? "Not enough repeated borewell measurements yet to infer trend."
+        : (improved > worsened
+          ? "More borewells show improvement (shallower depth), indicating local groundwater recovery."
+          : (worsened > improved
+            ? "More borewells show deeper water levels, indicating seasonal stress despite recharge interventions."
+            : "Borewell trend is mixed; improvements and declines are balanced."));
+      el.innerHTML =
+        `<div><b>Scope:</b> ${escapeHtml(scopeLabel || "Selected scope")}</div>` +
+        `<div><b>Borewells shown:</b> ${fmtIntIN(shown.length)}${avgShown !== null ? `, avg depth ${avgShown.toFixed(1)} ft` : ""}</div>` +
+        `<div><b>Trend window:</b> Oct 2025 to Jan 2026 (${deltas.length} borewells with repeated measurements)</div>` +
+        `<div style="margin-top:6px;"><b>Story:</b> ${escapeHtml(story)}</div>` +
+        `<div><b>Change split:</b> Improved ${improved}, Stable ${stable}, Worsened ${worsened}${medianDelta !== null ? ` (median change ${medianDelta.toFixed(1)} ft)` : ""}</div>` +
+        `<div class="small-note" style="margin-top:6px;">For borewells, lower depth from ground level means better groundwater availability.</div>` +
+        (activeDonor !== "ALL" ? `<div class="small-note">Borewell dataset is not donor-tagged; donor filter does not alter borewell records.</div>` : "");
+    }
+    function drawBorewells(overridePark = null) {
+      if (!mapReady) return;
+      if (!isBorewellLayerVisible()) {
+        setSourceData("borewells", emptyFeatureCollection);
+        return;
+      }
+      const recs = getDrawableBorewells(overridePark);
+      const features = recs
+        .filter(r => Number.isFinite(Number(r.lat)) && Number.isFinite(Number(r.lon)))
+        .map(r => {
+          const band = getBorewellDepthBand(r.depthFt);
+          return {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [Number(r.lon), Number(r.lat)] },
+            properties: {
+              wellId: r.wellId || "NA",
+              zone: r.zone || "NA",
+              date: r.date || "NA",
+              depthFt: r.depthFt !== null && Number.isFinite(Number(r.depthFt)) ? Number(r.depthFt).toFixed(1) : "NA",
+              status: r.status || "NA",
+              remark: r.remark || "NA",
+              borewellColor: band.color,
+              borewellBand: band.label
+            }
+          };
+        });
+      setSourceData("borewells", { type: "FeatureCollection", features });
+    }
+    function clearBorewells() {
+      if (!mapReady) return;
+      setSourceData("borewells", emptyFeatureCollection);
+      if (borewellPopup) {
+        borewellPopup.remove();
+        borewellPopup = null;
+      }
+    }
 
     function parkMatchesFilters(park) {
       const parkOk = activeParkFilterKey === "ALL" || park.parkKey === activeParkFilterKey;
@@ -655,21 +929,26 @@
       drawParks();
       if (selectedParkKey && state.parks.has(selectedParkKey)) {
         const park = state.parks.get(selectedParkKey);
-        const wells = filteredWellsForPark(park);
-        if (parkMatchesFilters(park) && wells.length) {
-          drawWellsForPark(park);
+        if (parkMatchesFilters(park)) {
+          if (isPercolationLayerVisible()) drawWellsForPark(park);
+          else clearWells();
+          if (isBorewellLayerVisible()) drawBorewells(park);
+          else clearBorewells();
           renderParkSummary(park);
           renderDepthVsRainTable(park);
           renderTrendPanel(park);
         } else {
           selectedParkKey = null;
           clearWells();
+          drawBorewells(null);
           resetSelectionPanel();
           if (activeDonor !== "ALL" || activeMonth !== "ALL" || activeValley !== "ALL") renderScopeTrendPanel();
           else closeTrendPanel();
         }
       } else {
         clearWells();
+        if (isBorewellLayerVisible()) drawBorewells(null);
+        else clearBorewells();
         resetSelectionPanel();
         if (activeDonor !== "ALL" || activeMonth !== "ALL" || activeValley !== "ALL") renderScopeTrendPanel();
         else closeTrendPanel();
@@ -677,33 +956,67 @@
       updateTopStats();
       renderCompareStats();
     }
-    function zoomToParkSelection(park) {
-      const repWells = getDrawableRepresentativeWells(filteredWellsForPark(park));
-      if (repWells.length) {
-        const parkLat = Number(park.parkLat);
-        const parkLon = Number(park.parkLon);
-        const nearWells = repWells.filter(w => {
-          const wLat = Number(w.wellLat);
-          const wLon = Number(w.wellLon);
-          if (!Number.isFinite(wLat) || !Number.isFinite(wLon)) return false;
-          return distanceKm(parkLat, parkLon, wLat, wLon) <= 1.5;
-        });
-        const wellsForZoom = nearWells.length ? nearWells : repWells;
-        if (wellsForZoom.length === 1) {
-          const x = Number(wellsForZoom[0].wellLon);
-          const y = Number(wellsForZoom[0].wellLat);
-          const dLon = 0.01;
-          const dLat = 0.01 * Math.cos(y * Math.PI / 180);
-          map.fitBounds([[x - dLon, y - dLat], [x + dLon, y + dLat]], { padding: 60, duration: 600, maxZoom: 15.5 });
-          return;
-        }
-        const bounds = wellsForZoom.reduce(
-          (acc, w) => acc.extend([Number(w.wellLon), Number(w.wellLat)]),
-          new mapboxgl.LngLatBounds([Number(wellsForZoom[0].wellLon), Number(wellsForZoom[0].wellLat)], [Number(wellsForZoom[0].wellLon), Number(wellsForZoom[0].wellLat)])
-        );
-        map.fitBounds(bounds, { padding: 60, duration: 700, maxZoom: 16 });
-        return;
+    function validBorewellCoords(rec) {
+      return Number.isFinite(Number(rec?.lat)) && Number.isFinite(Number(rec?.lon));
+    }
+    function uniqueCoords(coords) {
+      const seen = new Set();
+      const out = [];
+      coords.forEach(c => {
+        const key = `${Number(c[0]).toFixed(6)},${Number(c[1]).toFixed(6)}`;
+        if (seen.has(key)) return;
+        seen.add(key);
+        out.push(c);
+      });
+      return out;
+    }
+    function fitMapToCoords(coords, options = {}) {
+      if (!coords.length) return false;
+      const padding = options.padding ?? 60;
+      const duration = options.duration ?? 700;
+      const maxZoom = options.maxZoom ?? 16;
+      if (coords.length === 1) {
+        const [x, y] = coords[0];
+        const dLon = 0.01;
+        const dLat = 0.01 * Math.cos(y * Math.PI / 180);
+        map.fitBounds([[x - dLon, y - dLat], [x + dLon, y + dLat]], { padding, duration, maxZoom });
+        return true;
       }
+      const bounds = coords.reduce(
+        (acc, cur) => acc.extend(cur),
+        new mapboxgl.LngLatBounds(coords[0], coords[0])
+      );
+      map.fitBounds(bounds, { padding, duration, maxZoom });
+      return true;
+    }
+    function filterCoordsNearPark(park, coords, radiusKm = 3.0) {
+      const parkLat = Number(park?.parkLat);
+      const parkLon = Number(park?.parkLon);
+      if (!Number.isFinite(parkLat) || !Number.isFinite(parkLon)) return coords;
+      const near = coords.filter(c => distanceKm(parkLat, parkLon, Number(c[1]), Number(c[0])) <= radiusKm);
+      if (near.length) return near;
+      const ranked = coords
+        .map(c => ({ coord: c, dist: distanceKm(parkLat, parkLon, Number(c[1]), Number(c[0])) }))
+        .sort((a, b) => a.dist - b.dist);
+      if (!ranked.length || ranked[0].dist > 8) return [];
+      return ranked.slice(0, Math.min(8, ranked.length)).map(x => x.coord);
+    }
+    function zoomToParkSelection(park) {
+      let coords = [];
+      if (isPercolationLayerVisible()) {
+        const repWells = getDrawableRepresentativeWells(filteredWellsForPark(park));
+        coords = coords.concat(repWells.map(w => [Number(w.wellLon), Number(w.wellLat)]));
+      }
+      if (isBorewellLayerVisible()) {
+        const boreCoords = getDrawableBorewells(park)
+          .filter(validBorewellCoords)
+          .map(b => [Number(b.lon), Number(b.lat)]);
+        coords = coords.concat(boreCoords);
+      }
+      coords = uniqueCoords(coords.filter(c => Number.isFinite(Number(c[0])) && Number.isFinite(Number(c[1]))));
+      const nearCoords = filterCoordsNearPark(park, coords, 3.0);
+      if (fitMapToCoords(nearCoords, { maxZoom: 16 })) return;
+
       const x = Number(park.parkLon);
       const y = Number(park.parkLat);
       const dLon = 0.01;
@@ -716,6 +1029,7 @@
       activeValley = "ALL";
       activeParkFilterKey = "ALL";
       selectedParkKey = null;
+      layerMode = "BOTH";
       compareEnabled = false;
       compareMonthA = state.monthKeys[0] || null;
       compareMonthB = state.monthKeys[state.monthKeys.length - 1] || null;
@@ -724,6 +1038,7 @@
       const donorSelect = document.getElementById("donorFilter");
       const valleySelect = document.getElementById("valleyFilter");
       const monthSelect = document.getElementById("monthFilter");
+      const layerModeSelect = document.getElementById("layerModeFilter");
       const compareToggle = document.getElementById("compareToggle");
       const compareCard = document.getElementById("compareCard");
       const monthASelect = document.getElementById("monthAFilter");
@@ -733,6 +1048,7 @@
       if (donorSelect) donorSelect.value = "ALL";
       if (valleySelect) valleySelect.value = "ALL";
       if (monthSelect) monthSelect.value = "ALL";
+      if (layerModeSelect) layerModeSelect.value = "BOTH";
       if (compareToggle) compareToggle.checked = false;
       if (compareCard) compareCard.classList.remove("open");
       if (monthASelect && compareMonthA) monthASelect.value = compareMonthA;
@@ -902,6 +1218,7 @@
       if (mapReady) return;
       map.addSource("parks", { type: "geojson", data: emptyFeatureCollection });
       map.addSource("wells", { type: "geojson", data: emptyFeatureCollection });
+      map.addSource("borewells", { type: "geojson", data: emptyFeatureCollection });
 
       map.addLayer({
         id: "parks-circle",
@@ -931,6 +1248,26 @@
           "circle-stroke-color": "#ffffff",
           "circle-stroke-width": 0.8,
           "circle-opacity": 0.92
+        }
+      });
+      map.addLayer({
+        id: "borewells-symbol",
+        type: "symbol",
+        source: "borewells",
+        layout: {
+          "text-field": "◆",
+          "text-size": [
+            "interpolate", ["linear"], ["zoom"],
+            9, 14,
+            11, 18,
+            13, 22
+          ],
+          "text-allow-overlap": true
+        },
+        paint: {
+          "text-color": ["coalesce", ["get", "borewellColor"], "#8b5cf6"],
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 1.2
         }
       });
 
@@ -991,6 +1328,31 @@
           ))
           .addTo(map);
       });
+      map.on("mouseenter", "borewells-symbol", () => {
+        map.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", "borewells-symbol", () => {
+        map.getCanvas().style.cursor = "";
+      });
+      map.on("click", "borewells-symbol", (e) => {
+        const feat = e.features && e.features[0];
+        if (!feat) return;
+        const p = feat.properties || {};
+        if (borewellPopup) borewellPopup.remove();
+        borewellPopup = new mapboxgl.Popup({ closeButton: true, closeOnClick: true, maxWidth: "340px", className: "uwbe-popup" })
+          .setLngLat(feat.geometry.coordinates)
+          .setHTML(
+            `<div class="uwbe-popup-card">` +
+            `<div class="uwbe-popup-title">Borewell: ${escapeHtml(p.wellId || "NA")}</div>` +
+            `<div><b>Zone/Valley:</b> ${escapeHtml(p.zone || "NA")}</div>` +
+            `<div><b>Depth from ground:</b> ${escapeHtml(p.depthFt || "NA")} ft (${escapeHtml(p.borewellBand || "NA")})</div>` +
+            `<div><b>Date:</b> ${escapeHtml(p.date || "NA")}</div>` +
+            `<div><b>Status:</b> ${escapeHtml(p.status || "NA")}</div>` +
+            `<div><b>Remark:</b> ${escapeHtml(p.remark || "NA")}</div>` +
+            `</div>`
+          )
+          .addTo(map);
+      });
 
       mapReady = true;
     }
@@ -1006,8 +1368,13 @@
       const bounds = [];
       for (const [parkKey, park] of state.parks) {
         if (selectedParkKey && parkKey === selectedParkKey) {
-          const selectedDrawableWells = getDrawableRepresentativeWells(filteredWellsForPark(park));
-          if (selectedDrawableWells.length > 0) continue;
+          const selectedPercolation = isPercolationLayerVisible()
+            ? getDrawableRepresentativeWells(filteredWellsForPark(park)).length
+            : 0;
+          const selectedBore = isBorewellLayerVisible()
+            ? getDrawableBorewells(park).filter(validBorewellCoords).length
+            : 0;
+          if (selectedPercolation > 0 || selectedBore > 0) continue;
         }
         if (!parkMatchesFilters(park)) continue;
         const wells = filteredWellsForPark(park);
@@ -1119,6 +1486,7 @@
          <div class="row"><span class="label">Continuously monitored wells (>=3 months, Aug 2025-Jan 2026)</span><span class="value">${continuousWellCount}</span></div>
          <div class="row"><span class="label">Avg water level</span><span class="value">${avgWaterLevel !== null ? avgWaterLevel.toFixed(2) : "NA"} ft</span></div>`;
       renderLagInsight(wellsAllMonths, `Park: ${park.parkName}`);
+      renderBorewellImpact(`Park: ${park.parkName}`, park);
     }
     function getVisibleStats() {
       let parksVisible = 0;
@@ -1166,6 +1534,7 @@
         `<div class="row"><span class="label">Wells (filtered)</span><span class="value">${fmtIntIN(uniqueWells)}</span></div>` +
         `<div class="row"><span class="label">Avg water level</span><span class="value">${avgWaterLevel !== null ? avgWaterLevel.toFixed(2) : "NA"} ft</span></div>`;
       renderLagInsight(wellsForLag, scopeLabel);
+      renderBorewellImpact(scopeLabel, null);
     }
     function buildMonthlyScopeStats(wells) {
       const byMonth = new Map();
@@ -1549,7 +1918,10 @@
       const park = state.parks.get(parkKey);
       if (!park) return;
       drawParks();
-      drawWellsForPark(park);
+      if (isPercolationLayerVisible()) drawWellsForPark(park);
+      else clearWells();
+      if (isBorewellLayerVisible()) drawBorewells(park);
+      else clearBorewells();
       renderParkSummary(park);
       renderDepthVsRainTable(park);
       renderTrendPanel(park);
@@ -1607,6 +1979,7 @@
         donorSelect.appendChild(opt);
       });
       const valleySelect = document.getElementById("valleyFilter");
+      const layerModeSelect = document.getElementById("layerModeFilter");
 
       parkSelect.addEventListener("change", (e) => {
         activeParkFilterKey = e.target.value;
@@ -1654,6 +2027,14 @@
         activeMonth = e.target.value;
         applyFilters();
       });
+      if (layerModeSelect) {
+        layerModeSelect.value = layerMode;
+        layerModeSelect.addEventListener("change", (e) => {
+          const nextMode = String(e.target.value || "BOTH");
+          layerMode = (nextMode === "PERC_ONLY" || nextMode === "BORE_ONLY" || nextMode === "BOTH") ? nextMode : "BOTH";
+          applyFilters();
+        });
+      }
 
       const compareToggle = document.getElementById("compareToggle");
       const compareCard = document.getElementById("compareCard");
@@ -1692,11 +2073,11 @@
           throw new Error("Set your Mapbox token in MAPBOX_ACCESS_TOKEN before loading this page.");
         }
         await loadWells();
+        await loadBorewells();
         const initAfterMapReady = () => {
           ensureMapLayers();
           initFilters();
-          updateTopStats();
-          drawParks();
+          applyFilters();
           window.__UWBE_APP_READY__ = true;
         };
         if (map.loaded()) {
@@ -1713,8 +2094,9 @@
       } catch (err) {
         const errBox = document.getElementById("err");
         if (errBox) {
+          const pageName = window.location.pathname.split("/").pop() || "index.html";
           errBox.style.display = "block";
-          errBox.innerHTML = `${String(err.message || err)}<br><span class="hint">Run a local server in this folder, e.g. <code>python -m http.server 8000</code>, and open <code>http://localhost:8000/interactive_map.html</code>.</span>`;
+          errBox.innerHTML = `${String(err.message || err)}<br><span class="hint">Run a local server in this folder, e.g. <code>python -m http.server 8000</code>, and open <code>http://localhost:8000/${escapeHtml(pageName)}</code>.</span>`;
         }
       }
     }
