@@ -1,0 +1,428 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Percolation Wells vs Rainfall - Interactive Map</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Palanquin:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --header-h: 64px; --ui-font: "Palanquin", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: var(--ui-font);
+      color: #111827;
+    }
+    .mapboxgl-ctrl, .mapboxgl-ctrl * { font-family: var(--ui-font) !important; }
+    .mapboxgl-popup * { font-family: var(--ui-font); }
+    .mapboxgl-popup.uwbe-popup .mapboxgl-popup-content {
+      padding: 0;
+      border-radius: 12px;
+      box-shadow: 0 8px 22px rgba(0,0,0,.16);
+      border: 1px solid #e5e7eb;
+    }
+    .mapboxgl-popup.uwbe-popup .mapboxgl-popup-tip {
+      border-top-color: #fff;
+      border-bottom-color: #fff;
+    }
+    .uwbe-popup-card {
+      padding: 12px 14px;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #1f2937;
+      max-width: 340px;
+    }
+    .uwbe-popup-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #111827;
+    }
+    .uwbe-popup-sep {
+      margin: 8px -14px;
+      border-top: 1px solid #e5e7eb;
+    }
+    .uwbe-popup-foot {
+      color: #6b7280;
+      font-size: 12px;
+    }
+    .header-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: var(--header-h);
+      background: #fff;
+      padding: 10px 18px;
+      border-bottom: 2px solid #eee;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .header-panel .logo img { height: 44px; }
+    .header-panel .title { flex: 1; text-align: center; }
+    .header-panel .title h1 { margin: 0; font-size: 20px; color: #1a3dab; line-height: 1.05; }
+    .header-panel .title h2 { margin: 2px 0 0; font-size: 15px; color: #e63323; line-height: 1.05; }
+    .header-panel .menu a { text-decoration: none; color: #374151; font-size: 14px; font-weight: 700; }
+    #map {
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    #controls {
+      position: absolute;
+      top: calc(var(--header-h) + 12px);
+      left: 12px;
+      width: 360px;
+      max-height: calc(100vh - var(--header-h) - 24px);
+      overflow: auto;
+      z-index: 900;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.15);
+      padding: 12px;
+      font-size: 14px;
+    }
+    #controls summary { cursor: pointer; font-weight: 700; margin-bottom: 8px; }
+    #controls p.sub { margin: 0 0 10px; font-size: 12px; color: #6b7280; }
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 4px 0;
+      border-bottom: 1px dashed #e8edf3;
+      font-size: 13px;
+    }
+    .row:last-child { border-bottom: none; }
+    .label { color: #6b7280; font-size: 13px; display: block; margin-bottom: 4px; }
+    .row .label { margin-bottom: 0; display: inline; }
+    .value { font-weight: 600; }
+    select {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 8px;
+      background: #fff;
+      color: #111827;
+      font-family: var(--ui-font);
+    }
+    input[type="range"] { width: 100%; }
+    input[type="checkbox"] { transform: translateY(1px); }
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      color: #0f172a;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      font-family: var(--ui-font);
+    }
+    .btn.primary {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+      color: #fff;
+    }
+    .small-note { font-size: 11px; color: #64748b; margin-top: 6px; }
+    #compareCard { display: none; }
+    #compareCard.open { display: block; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 6px;
+      text-align: left;
+    }
+    th { background: #f9fafb; font-weight: 700; color: #374151; }
+    .hint {
+      font-size: 12px;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid #d1d5db;
+      background: #fff;
+      margin-right: 4px;
+    }
+    #legend {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      width: 250px;
+      z-index: 903;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.15);
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+    #trendPanel {
+      position: absolute;
+      right: 12px;
+      top: calc(var(--header-h) + 12px);
+      width: min(520px, calc(100vw - 24px));
+      max-height: calc(100vh - var(--header-h) - 24px);
+      overflow: auto;
+      z-index: 904;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.2);
+      border: 1px solid #e5e7eb;
+      display: none;
+    }
+    #trendPanel.open { display: block; }
+    .trend-head {
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .trend-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .trend-title {
+      font-size: 34px;
+      line-height: 1.02;
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+    }
+    .trend-subtitle {
+      color: #4b5563;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .trend-close {
+      border: none;
+      background: transparent;
+      font-size: 30px;
+      line-height: 1;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 0;
+    }
+    .pill-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #374151;
+      background: #f8fafc;
+    }
+    .pill.pill-amber {
+      border-color: #f59e0b;
+      color: #b45309;
+      background: #fffbeb;
+    }
+    .trend-body { padding: 12px 14px 14px; }
+    .trend-heading {
+      margin: 0 0 8px;
+      font-size: 12px;
+      color: #64748b;
+      letter-spacing: 0.6px;
+      font-weight: 700;
+    }
+    #trendCanvasWrap {
+      border-top: 1px solid #e5e7eb;
+      padding-top: 10px;
+    }
+    #trendEmpty {
+      display: none;
+      color: #6b7280;
+      font-size: 12px;
+      padding: 8px 2px 2px;
+    }
+    #legend details { margin: 0; }
+    .legend-summary { cursor: pointer; font-weight: 700; }
+    #legend details[open] #legendBody { margin-top: 8px; }
+    .legend-item { display: flex; align-items: center; gap: 8px; margin: 5px 0; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid #fff; box-shadow: 0 0 1px rgba(0,0,0,.6); }
+    .error {
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #7f1d1d;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: none;
+    }
+    @media (max-width: 768px) {
+      :root { --header-h: 56px; }
+      .header-panel { padding: 8px 10px; }
+      .header-panel .logo img { height: 38px; }
+      .header-panel .title h1 { font-size: 16px; }
+      .header-panel .title h2 { font-size: 12px; }
+      .header-panel .menu { display: none; }
+      #controls {
+        top: auto;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(94vw, 520px);
+        max-height: 48vh;
+      }
+      #trendPanel {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        width: min(96vw, 620px);
+        top: calc(var(--header-h) + 8px);
+        max-height: 56vh;
+      }
+      #legend { right: 8px; bottom: calc(50vh + 20px); width: 190px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-panel">
+    <div class="logo"><img src="Logo.png" alt="United Way Logo" onerror="this.style.display='none'"></div>
+    <div class="title"><h1>UWBe Impact Atlas</h1><h2>Climate Action : One Billion Drops</h2></div>
+    <div class="menu"><a href="https://www.uwbengaluru.org/impact-areas/climate-action/" target="_blank">ABOUT</a></div>
+  </div>
+  <div id="map"></div>
+  <div id="controls">
+    <details open>
+      <summary>Filters & Summary</summary>
+      <p class="sub">Select a park on the map to zoom in and compare percolation well water level vs rainfall.</p>
+      <div class="card">
+        <div class="row">
+          <span class="label">Parks</span>
+          <span class="value" id="parkCount">0</span>
+        </div>
+        <div class="row">
+          <span class="label">Wells</span>
+          <span class="value" id="wellCount">0</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <label for="parkFilter" class="label">Select park</label>
+        <select id="parkFilter">
+          <option value="ALL">All parks</option>
+        </select>
+        <label for="donorFilter" class="label" style="margin-top:8px;">Select donor</label>
+        <select id="donorFilter">
+          <option value="ALL">All donors</option>
+        </select>
+        <label for="valleyFilter" class="label" style="margin-top:8px;">Select valley</label>
+        <select id="valleyFilter">
+          <option value="ALL">All valleys</option>
+          <option value="KC">KC Valley</option>
+          <option value="HEBBAL">Hebbal Valley</option>
+          <option value="V">V Valley</option>
+        </select>
+        <label for="monthFilter" class="label">Filter map by month</label>
+        <select id="monthFilter">
+          <option value="ALL">All months</option>
+        </select>
+        <div class="btn-row" style="margin-top:8px;">
+          <button id="clearFiltersBtn" type="button" class="btn">Clear filters</button>
+        </div>
+        <label class="label" style="margin-top:10px;">
+          <input id="compareToggle" type="checkbox"> Compare mode (Month A vs Month B)
+        </label>
+        <div id="compareCard">
+          <label for="monthAFilter" class="label">Month A</label>
+          <select id="monthAFilter"></select>
+          <label for="monthBFilter" class="label" style="margin-top:8px;">Month B</label>
+          <select id="monthBFilter"></select>
+          <div id="compareStats" class="small-note">Select a park to view compare stats.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="value" style="margin-bottom:8px;">Summary</div>
+        <div id="parkSummary"></div>
+      </div>
+      <div class="card">
+        <div class="value" style="margin-bottom:8px;">Rainfall-Recharge Relation</div>
+        <div id="impactWriteup" class="hint">Correlation insight will appear after data loads.</div>
+      </div>
+
+      <div class="card">
+        <div class="value" style="margin-bottom:8px;">Water Level vs Rainfall by Month</div>
+        <div id="depthRainTable" class="hint">Table will appear after selecting a park.</div>
+      </div>
+      <div class="card">
+        <div class="value" style="margin-bottom:8px;">Export</div>
+        <div class="btn-row">
+          <button id="downloadCsvBtn" type="button" class="btn primary">Download Filtered CSV</button>
+        </div>
+      </div>
+      <div id="err" class="error"></div>
+    </details>
+  </div>
+  <div id="legend">
+    <details open>
+      <summary class="legend-summary">Legend</summary>
+      <div id="legendBody">
+        <div class="legend-item"><span class="legend-dot" style="background:#64748b"></span><span>Parks (color by donor)</span></div>
+        <div class="legend-item"><span class="legend-dot" style="background:#9ca3af"></span><span>Well: 0 ft</span></div>
+        <div class="legend-item"><span class="legend-dot" style="background:#dc2626"></span><span>Well: 0-2 ft</span></div>
+        <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span><span>Well: 2-4 ft</span></div>
+        <div class="legend-item"><span class="legend-dot" style="background:#60a5fa"></span><span>Well: 4+ ft</span></div>
+      </div>
+    </details>
+  </div>
+  <div id="trendPanel" aria-live="polite">
+    <div class="trend-head">
+      <div class="trend-title-row">
+        <h3 id="trendParkName" class="trend-title">Park</h3>
+        <button id="trendCloseBtn" class="trend-close" type="button" aria-label="Close trend panel">&times;</button>
+      </div>
+      <div id="trendValley" class="trend-subtitle"></div>
+      <div class="pill-wrap">
+        <span id="trendBasinPill" class="pill pill-amber"></span>
+        <span id="trendDonorPill" class="pill"></span>
+        <span id="trendAvgPill" class="pill"></span>
+      </div>
+    </div>
+    <div class="trend-body">
+      <p class="trend-heading">AVG WATER LEVEL (FT) VS IMD RAINFALL</p>
+      <div id="trendCanvasWrap">
+        <canvas id="trendChart" height="230"></canvas>
+      </div>
+      <div id="trendEmpty">No monthly records available for this park.</div>
+    </div>
+  </div>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="interactive_map.js?v=20260221-3" defer></script>
+  <script>
+    setTimeout(() => {
+      if (window.__UWBE_SCRIPT_STARTED__) return;
+      const errBox = document.getElementById("err");
+      if (!errBox) return;
+      errBox.style.display = "block";
+      errBox.innerHTML = 'App script failed to load. Hard refresh with <code>Ctrl+Shift+R</code> and confirm <code>interactive_map.js</code> is served.';
+    }, 3500);
+  </script>
+</body>
+</html>
