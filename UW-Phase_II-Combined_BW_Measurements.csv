@@ -1,0 +1,325 @@
+﻿United Way - Bengaluru,,,,,,,,,,
+Phase II - Borewell Monitoring,,,,,,,,,,
+Combined Measurements Report (October 2025 - January 2026),,,,,,,,,,
+SN,Well ID,Water Level from Ground Level (m),Water Level from Ground Level (ft),Date and Time of Measurement,Latitude,Longitude,Location,Borewell Monitoring Status,Zone/Valley,Remark
+1,G2D,5.88,19.29,Oct 28 2025 2:38PM,13.10453393,77.55518883,"Veerasagara,Attur main road",Done,Hebbal,BBMP BORE WELL
+2,G3C,5.96,19.55,Oct 28 2025 1:03PM,13.10470292,77.57699498,"Atturu Yelahanka 4 th phase, 1st main road, Near Sumahan engineering coaching class",Done,Hebbal,BBMP BORE WELL
+3,G3D,3.15,10.33,Oct 28 2025 11:59AM,13.09471157,77.57916328,"LIG 3 rd phase, Near Yelahanka satellite town busstand, Post office roadYelahanka Satellite town",Done,Hebbal,BBMP BORE WELL
+4,G3E,,,,13.08327075,77.56510122,"Narashima layout, Vidyaranyapura 7 th main Bus stop",Network issue to use the App due to Jammer active in the area,Hebbal,BBMP BORE WELL
+5,G2E,57.32,188.06,Oct 28 2025 11:19AM,13.08738762,77.55441867,"M.S.Palaya,Abbasia colony",Done,Hebbal,ABANDONED BORE WELL
+6,G2EN,13.17,43.21,Oct 28 2025 11:36AM,13.08601379,77.54837833,"M.S.Palaya,Abbasia colony 4 TH CROSS",Done,Hebbal,ABANDONED BORE WELL
+7,225,9.11,29.89,Oct 28 2025 12:40PM,13.098901,77.572748,,Done,Hebbal,
+8,226,,,,13.098443,77.599606,,"Not in a condition to take reading; nearby, only closed manhole-type borewells were found.  Alternate location required.",Hebbal,
+9,224,11.12,36.48,Oct 28 2025 11:08AM,13.091902,77.558181,,Done,Hebbal,
+10,G11C,,,,13.02035576,77.56128899,Subedar palya ( opp temple ) Near Shastry memorial school,"Borewell is in the manhole, so reading can’t be taken.",Vrishabhavathi,BBMP BORE WELL
+11,G12B,,,,12.99935124,77.57298627,Malleswaram 8 th cross,"Borewell is in the manhole, reading can’t be taken and the Borewell is utilized for the purifier.",Vrishabhavathi,BBMP BORE WELL
+12,G11D,,,,12.99967096,77.56349468,"Malleswaram RS gaytrinagar, Ramamohanapuram 5th cross","Borewell is in the manhole, so reading can’t be taken.",Vrishabhavathi,BBMP BORE WELL
+13,G11B,31.03,101.80,Oct 26 2025 12:09PM,13.00932054,77.54574434,"Mahalaxmipuram, Near Sri prasanna Veeranjaneya swamy, 6th main,11th cross road",Done,Vrishabhavathi,BBMP BORE WELL
+14,G12C,8.76,28.74,Oct 26 2025 2:14PM,12.98976627,77.58849276,"Hanuman temple, Palace cross road",Done,Vrishabhavathi,PUBLIC BORE WELL
+15,G18A,,,,12.97488334,77.57795217,Arka mahaganapathi temple near Janatha bazaar gandhinagar,Permission denied; borewell is inside Panchayath Raj and Commercial Tax campus. Alternate location required.,Vrishabhavathi,BBMP BORE WELL
+16,G11E,,,,12.9789024,77.55981867,Gopalpura ( behind minerva mills ) 2nd cross road,Unable to place metal plate for reading. Alternate location require,Vrishabhavathi,BBMP BORE WELL
+17,G17C,,,,12.96823443,77.55028081,K.P.Agrahara 10th cross,Unable to place metal plate for reading. Alternate location require,Vrishabhavathi,BBMP BORE WELL
+18,G11F,,,,12.97943939,77.53521764,Pwd office near KHB bus stop govindraj nagar,Unable to place metal plate for reading. Alternate location require,Vrishabhavathi,BBMP BORE WELL
+19,G18B,,,,12.96369554,77.58140285,"S.J.Park, K.R.Market",Measurement could not be done due to absence of echo,Vrishabhavathi,ABANDONED BORE WELL
+20,BW186,,,,13.003,77.563,Public borewell 12 th cross Malleswaram Pumping 2hr morning and evening.,"Borewell is in the manhole, so reading can’t be taken. Alternate location required.",Vrishabhavathi,PUBLIC BORE WELL
+21,BW043,17.84,58.53,Oct 25 2025 5:09PM,12.917897,77.650359,,Done,Bommanahalli,
+22,BW026,8.63,28.31,Oct 25 2025 12:56PM,12.9091828,77.5879866,,Done,Bommanahalli,
+23,BW027,8.21,26.94,Oct 25 2025 12:36PM,12.921,77.5896389,,Done,Bommanahalli,
+24,BW029,7.40,24.28,Oct 25 2025 12:25PM,12.924972,77.59025,,Done,Bommanahalli,
+25,BW034,3.19,10.47,Oct 25 2025 11:31AM,12.9253057,77.5806544,,Done,Bommanahalli,
+26,BW036,13.37,43.86,Oct 25 2025 1:48PM,12.9120531,77.5986893,,Done,Bommanahalli,
+27,BW046,19.72,64.70,Oct 25 2025 12:04PM,12.93570521,77.58051786,,Done,Bommanahalli,
+28,G24C,,,,12.923,77.603,Gurappanapalya 4th main road,Borewell recently closed; no open borewell nearby.,Bommanahalli,BBMP BORE WELL
+29,G24D,,,,12.906,77.596,"House, J.P.nagar, Outer ring road, Near Domino's",Unable to take reading; borewell is 3 feet below ground level.,Bommanahalli,BBMP BORE WELL
+30,G24E,33.86,111.09,Oct 25 2025 1:39PM,12.909,77.595,"J.P.nagar Park,8th main road, 11th cross",Done,Bommanahalli,BBMP BORE WELL
+31,G24F,10.21,33.50,Oct 27 2025 11:45AM,12.892,77.605,"Bilekhalli park, 6th cross road",Done,Bommanahalli,BBMP BORE WELL
+32,G24G,26.76,87.80,Oct 25 2025 10:20AM,12.901,77.582,"Puttenahalli main road, near Jaraganahalli( Sarakki ) lake",Done,Bommanahalli,ABANDONED BORE WELL
+33,G25A,44.56,146.19,Oct 25 2025 3:51PM,12.921,77.619,"Madivala, VP road,2nd cross",Done,Bommanahalli,BBMP BORE WELL
+34,G25B,,,,12.925,77.637,"Jakkasandra, 1st main, 1st cross road",Unable to place metal plate for reading. Alternate location require,Bommanahalli,ABANDONED BORE WELL
+35,G25C,9.08,29.79,Oct 25 2025 5:39PM,12.911,77.645,"HSR layout,Stedium 19th main road 19th cross",Done,Bommanahalli,BBMP BORE WELL
+36,G25D,,,,12.901,77.646,"Soma Sundara palya, Mangammanapalya main road, Near Hosapalaya main road cross","Borewell not found, and no nearby borewell observed.",Bommanahalli,BBMP BORE WELL
+37,G25E,21.89,71.82,Oct 27 2025 2:18PM,12.907,77.636,"Mangammanapalya, 27th cross road",Done,Bommanahalli,BBMP BORE WELL
+38,G25FN,,,,12.903,77.63,"BOMMANAHALLI,ICAT",Permission denied; the well is inside Greenage Apartment. Alternate location required.,Bommanahalli,OPEN WELL
+39,G26BN,9.73,31.92,Oct 25 2025 4:46PM,12.923,77.666,IBLUR,Done,Bommanahalli,BBMP BORE WELL
+40,G27C,25.97,85.20,Oct 27 2025 6:04PM,12.864,77.591,"Gottigere,Bannerghatta main road, Kalena Agrahara, Near Himagiri meadows Busstop",Done,Bommanahalli,BBMP BORE WELL
+41,G27D,15.94,52.30,Oct 27 2025 12:16PM,12.883,77.604,"Arakere park, Near Shanthiniketan layout bus stop,B main road",Done,Bommanahalli,BBMP BORE WELL
+42,G27E,11.10,36.42,Oct 26 2025 4:34PM,12.883,77.573,"Srinidhi layout, 1st main road 7th cross, Konanakunte",Done,Bommanahalli,BBMP BORE WELL
+43,G28E,20.30,66.60,Oct 27 2025 1:17PM,12.873,77.626,"Begur, 6th cross",Done,Bommanahalli,BBMP BORE WELL
+44,G28F,18.63,61.12,Oct 27 2025 12:44PM,12.865,77.618,"Yelenahalli, Koppa road",Done,Bommanahalli,BBMP BORE WELL
+45,new94,,,,12.914,77.611,ward no. 176 btm layout 2nd stage,"Borewell not found, and no nearby borewell observed.",Bommanahalli,
+46,new95,,,,12.909,77.578,sarakki ward no 178 abandoned,"Borewell is in the manhole, so reading can’t be taken.",Bommanahalli,
+47,G2D,6.19,20.31,Nov 13 2025 5:10PM,13.10453393,77.55518883,"Veerasagara,Attur main road",Done,Hebbal,BBMP BORE WELL
+48,G3C,3.74,12.27,Nov 13 2025 5:46PM,13.10470292,77.57699498,"Atturu Yelahanka 4 th phase, 1st main road, Near Sumahan engineering coaching class",Done,Hebbal,BBMP BORE WELL
+49,G3D,3.36,11.02,Nov 13 2025 3:32PM,13.09471157,77.57916328,"LIG 3 rd phase, Near Yelahanka satellite town busstand, Post office roadYelahanka Satellite town",Done,Hebbal,BBMP BORE WELL
+50,G2E,63.17,207.25,Nov 13 2025 2:20PM,13.08738762,77.55441867,"M.S.Palaya,Abbasia colony",Done,Hebbal,ABANDONED BORE WELL
+51,G2EN,17.04,55.91,Nov 13 2025 2:06PM,13.08601379,77.54837833,"M.S.Palaya,Abbasia colony 4 TH CROSS",Done,Hebbal,ABANDONED BORE WELL
+52,225,10.17,33.37,Nov 13 2025 4:33PM,13.098901,77.572748,"1st Main Rd, Self Financed Society 208 Colony, Yelahanka New Town",Done,Hebbal,
+53,224,52.30,171.59,Nov 13 2025 2:40PM,13.091902,77.558181,"Bettahalli Layout, Adityanagar, Vidyaranyapura",Done,Hebbal,
+54,G11B,36.03,118.21,Nov 15 2025 5:15PM,13.00932054,77.54574434,"Mahalaxmipuram, Near Sri prasanna Veeranjaneya swamy, 6th main,11th cross road",Done,Vrishabhavathi,BBMP BORE WELL
+55,G12C,11.62,38.12,Nov 15 2025 12:23PM,12.98976627,77.58849276,"Hanuman temple, Palace cross road",Done,Vrishabhavathi,PUBLIC BORE WELL
+56,G18B,-0.75,-2.46,Nov 15 2025 2:27PM,13.00937,77.5458017,"S.J.Park, K.R.Market",Error,Vrishabhavathi,ABANDONED BORE WELL
+57,BW043,25.58,83.92,Nov 15 2025 1:44PM,12.917897,77.650359,"5, 10th Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+58,BW026,8.66,28.41,Nov 15 2025 6:33PM,12.9091828,77.5879866,"Dhanvanthari Park,  Phase 2, 2nd Phase, J. P. Nagar",Done,Bommanahalli,
+59,BW027,8.42,27.62,Nov 14 2025 10:09AM,12.921,77.5896389,"18th Main Rd, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+60,BW029,7.88,25.85,Nov 14 2025 10:35AM,12.924972,77.59025,"35th Cross Rd, T Block, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+61,BW034,4.07,13.35,Nov 14 2025 11:13AM,12.9253057,77.5806544,"5th Main Rd, 4th Block, Jayanagar",Done,Bommanahalli,
+62,BW036,25.02,82.09,Nov 14 2025 1:11PM,12.9120531,77.5986893,"43b, 1st Main Rd, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+63,BW046,28.68,94.09,Nov 14 2025 11:49AM,12.93570521,77.58051786,"5th Main Rd, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar",Done,Bommanahalli,
+64,G24E,71.56,234.78,Nov 14 2025 1:40PM,12.909,77.595,"J.P.nagar Park,8th main road, 11th cross",Done,Bommanahalli,BBMP BORE WELL
+65,G24F,10.58,34.71,Nov 14 2025 2:25PM,12.892,77.605,"Bilekhalli park, 6th cross road",Done,Bommanahalli,BBMP BORE WELL
+66,G24G,28.43,93.27,Nov 14 2025 9:31AM,12.901,77.582,"Puttenahalli main road, near Jaraganahalli( Sarakki ) lake",Done,Bommanahalli,ABANDONED BORE WELL
+67,G25A,51.94,170.41,Nov 15 2025 3:14PM,12.921,77.619,"Madivala, VP road,2nd cross",Done,Bommanahalli,BBMP BORE WELL
+68,G25C,20.21,66.31,Nov 15 2025 2:06PM,12.911,77.645,"HSR layout,Stedium 19th main road 19th cross",Done,Bommanahalli,BBMP BORE WELL
+69,G25E,19.57,64.21,Nov 15 2025 2:36PM,12.907,77.636,"Mangammanapalya, 27th cross road",Done,Bommanahalli,BBMP BORE WELL
+70,G26BN,21.40,70.21,Nov 15 2025 1:08PM,12.923,77.666,IBLUR,Done,Bommanahalli,BBMP BORE WELL
+71,G27C,25.42,83.40,Nov 14 2025 12:57PM,12.864,77.591,"Gottigere,Bannerghatta main road, Kalena Agrahara, Near Himagiri meadows Busstop",Done,Bommanahalli,BBMP BORE WELL
+72,G27D,18.93,62.11,Nov 14 2025 2:40PM,12.883,77.604,"Arakere park, Near Shanthiniketan layout bus stop,B main road",Done,Bommanahalli,BBMP BORE WELL
+73,G27E,11.59,38.02,Nov 14 2025 12:25PM,12.883,77.573,"Srinidhi layout, 1st main road 7th cross, Konanakunte",Done,Bommanahalli,BBMP BORE WELL
+74,G28E,16.46,54.00,Nov 15 2025 5:29PM,12.873,77.626,"Begur, 6th cross",Done,Bommanahalli,BBMP BORE WELL
+75,BW061,82.22,269.75,Nov 15 2025 4:52PM,12.9095884,77.5881775,"Brigade Gateway Campus, Dr Rajkumar Rd, Malleshwaram",Done,Vrishabhavathi,
+76,BW073,4.83,15.85,Nov 15 2025 4:29PM,12.9095911,77.5881728,"Mariyappanapalya Park, 82, 6th Main Rd, Mariappanapalya, Rajajinagar",Done,Vrishabhavathi,
+77,BW074,14.88,48.82,Nov 15 2025 3:56PM,12.8726278,77.6259965,"Motappa Park, 1st Main Rd, Manjunath Nagar, Basaveshwar Nagar",Done,Vrishabhavathi,
+78,BW049,67.66,221.98,Nov 15 2025 3:20PM,12.8726294,77.6259942,"1st main road, Rajaji Nagar Industrial Town, Rajajinagar",Done,Vrishabhavathi,
+79,BW080,15.71,51.54,Nov 15 2025 3:01PM,12.8726496,77.6259929,"Children's Playing Park, 805, 3rd Main Rd, 4th Block, Rajajinagar",Done,Vrishabhavathi,
+80,BW066,5.91,19.39,Nov 15 2025 11:49AM,13.0028833,77.5700417,"5th Main Rd, Sadashiva Nagar, Armane Nagar",Done,Vrishabhavathi,
+81,BW109,30.67,100.62,Nov 13 2025 4:56PM,12.9980733,77.5563233,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+82,BW105,21.43,70.31,Nov 13 2025 4:47PM,12.9980663,77.556313,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+83,BW091,7.87,25.82,Nov 13 2025 4:06PM,12.99809,77.556355,"MIG Sector B, Udaya Layout, Yelahanka",Done,Hebbal,
+84,BW096,26.73,87.70,Nov 13 2025 3:54PM,12.9980777,77.556351,"Ganesha Park, 10th A Cross Rd, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+85,BW095,6.17,20.24,Nov 13 2025 3:44PM,12.998115,77.5563067,"Rajiv Gandhi Park, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+86,G2D,6.58,21.59,Nov 29 2025 4:12PM,13.10453393,77.55518883,"Veerasagara,Attur main road",Done,Hebbal,BBMP BORE WELL
+87,G3C,6.23,20.44,Nov 28 2025 5:50PM,13.10470292,77.57699498,"Atturu Yelahanka 4 th phase, 1st main road, Near Sumahan engineering coaching class",Done,Hebbal,BBMP BORE WELL
+88,G3D,3.61,11.84,Nov 29 2025 5:29PM,13.09471157,77.57916328,"LIG 3 rd phase, Near Yelahanka satellite town busstand, Post office roadYelahanka Satellite town",Done,Hebbal,BBMP BORE WELL
+89,G2E,66.22,217.26,Nov 29 2025 6:45PM,13.08738762,77.55441867,"M.S.Palaya,Abbasia colony",Done,Hebbal,ABANDONED BORE WELL
+90,G2EN,18.68,61.29,Nov 29 2025 6:53PM,13.08601379,77.54837833,"M.S.Palaya,Abbasia colony 4 TH CROSS",Done,Hebbal,ABANDONED BORE WELL
+91,225,10.24,33.60,Nov 29 2025 5:03PM,13.098901,77.572748,"1st Main Rd, Self Financed Society 208 Colony, Yelahanka New Town",Done,Hebbal,
+92,224,56.87,186.58,Nov 29 2025 4:25PM,13.091902,77.558181,"Bettahalli Layout, Adityanagar, Vidyaranyapura",Done,Hebbal,
+93,G11B,38.31,125.69,Nov 28 2025 4:29PM,13.00932054,77.54574434,"Mahalaxmipuram, Near Sri prasanna Veeranjaneya swamy, 6th main,11th cross road",Done,Vrishabhavathi,BBMP BORE WELL
+94,G12C,11.29,37.04,Nov 28 2025 2:09PM,12.98976627,77.58849276,"Hanuman temple, Palace cross road",Done,Vrishabhavathi,PUBLIC BORE WELL
+95,G18B,58.04,190.42,Nov 28 2025 2:07PM,13.00937,77.5458017,"S.J.Park, K.R.Market",Done,Vrishabhavathi,ABANDONED BORE WELL
+96,BW043,20.62,67.65,Dec 1 2025 2:08PM,12.9178898,77.6504301,"5, 10th Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+97,BW026,9.78,32.09,Nov 29 2025 1:00PM,12.9091828,77.5879866,"Dhanvanthari Park,  Phase 2, 2nd Phase, J. P. Nagar",Done,Bommanahalli,
+98,BW027,26.68,87.53,Nov 29 2025 12:02PM,12.921,77.5896389,"18th Main Rd, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+99,BW029,8.37,27.46,Nov 29 2025 11:40AM,12.924972,77.59025,"35th Cross Rd, T Block, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+100,BW034,4.56,14.96,Nov 29 2025 10:19AM,12.9253057,77.5806544,"5th Main Rd, 4th Block, Jayanagar",Done,Bommanahalli,
+101,BW036,18.35,60.20,Nov 29 2025 1:30PM,12.9120531,77.5986893,"43b, 1st Main Rd, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+102,BW046,29.50,96.78,Nov 29 2025 10:46AM,12.93570521,77.58051786,"5th Main Rd, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar",Done,Bommanahalli,
+103,G24E,54.59,179.10,Nov 29 2025 12:33PM,12.909,77.595,"J.P.nagar Park,8th main road, 11th cross",Done,Bommanahalli,BBMP BORE WELL
+104,G24F,11.22,36.81,Nov 29 2025 2:56PM,12.892,77.605,"Bilekhalli park, 6th cross road",Done,Bommanahalli,BBMP BORE WELL
+105,G24G,27.73,90.98,Nov 29 2025 9:49AM,12.901,77.582,"Puttenahalli main road, near Jaraganahalli( Sarakki ) lake",Done,Bommanahalli,ABANDONED BORE WELL
+106,G25A,52.24,171.39,Dec 1 2025 12:19PM,12.921,77.619,"Madivala, VP road,2nd cross",Done,Bommanahalli,BBMP BORE WELL
+107,G25C,9.54,31.30,Dec 1 2025 3:03PM,12.911,77.645,"HSR layout,Stedium 19th main road 19th cross",Done,Bommanahalli,BBMP BORE WELL
+108,G25E,21.86,71.72,Nov 30 2025 6:09PM,12.907,77.636,"Mangammanapalya, 27th cross road",Done,Bommanahalli,BBMP BORE WELL
+109,G26BN,10.67,35.01,Dec 1 2025 1:01PM,12.923,77.666,IBLUR,Done,Bommanahalli,BBMP BORE WELL
+110,G27C,83.66,274.48,Nov 29 2025 4:20PM,12.864,77.591,"Gottigere,Bannerghatta main road, Kalena Agrahara, Near Himagiri meadows Busstop",Done,Bommanahalli,BBMP BORE WELL
+111,G27D,21.33,69.98,Nov 29 2025 3:10PM,12.883,77.604,"Arakere park, Near Shanthiniketan layout bus stop,B main road",Done,Bommanahalli,BBMP BORE WELL
+112,G27E,15.58,51.12,Nov 29 2025 9:29AM,12.883,77.573,"Srinidhi layout, 1st main road 7th cross, Konanakunte",Done,Bommanahalli,BBMP BORE WELL
+113,G28E,20.51,67.29,Dec 1 2025 4:05PM,12.873,77.626,"Begur, 6th cross",Done,Bommanahalli,BBMP BORE WELL
+114,BW061,48.23,158.23,Nov 28 2025 3:02PM,12.9095884,77.5881775,"Brigade Gateway Campus, Dr Rajkumar Rd, Malleshwaram",Done,Bommanahalli,
+115,BW073,5.71,18.73,Nov 28 2025 3:27PM,12.9095911,77.5881728,"Mariyappanapalya Park, 82, 6th Main Rd, Mariappanapalya, Rajajinagar",Done,Vrishabhavathi,
+116,BW074,20.67,67.81,Nov 28 2025 4:16PM,12.8726278,77.6259965,"Motappa Park, 1st Main Rd, Manjunath Nagar, Basaveshwar Nagar",Done,Vrishabhavathi,
+117,BW049,6.64,21.78,Nov 28 2025 3:58PM,12.8726294,77.6259942,"1st main road, Rajaji Nagar Industrial Town, Rajajinagar",Done,Vrishabhavathi,
+118,BW080,15.90,52.17,Nov 28 2025 3:40PM,12.8726496,77.6259929,"Children's Playing Park, 805, 3rd Main Rd, 4th Block, Rajajinagar",Done,Vrishabhavathi,
+119,BW066,3.93,12.89,Nov 28 2025 2:37PM,13.0028833,77.5700417,"5th Main Rd, Sadashiva Nagar, Armane Nagar",Done,Vrishabhavathi,
+120,BW109,28.96,95.01,Nov 29 2025 4:32PM,12.9980733,77.5563233,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+121,BW105,17.90,58.73,Nov 29 2025 4:39PM,12.9980663,77.556313,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+122,BW091,7.13,23.39,Nov 29 2025 5:18PM,12.99809,77.556355,"MIG Sector B, Udaya Layout, Yelahanka",Done,Hebbal,
+123,BW096,33.01,108.30,Nov 29 2025 6:03PM,12.9980777,77.556351,"Ganesha Park, 10th A Cross Rd, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+124,BW095,6.02,19.75,Nov 29 2025 5:49PM,12.998115,77.5563067,"Rajiv Gandhi Park, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+125,BW042,12.46,40.88,Dec 1 2025 2:49PM,12.9166289,77.64811,"Hemavathi Park,11th A Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+126,BW044,9.71,31.86,Dec 1 2025 1:42PM,12.91725,77.6530467,"11th Cross, 29th Main Road, Main gate, opposite Nethravathi Park, 1st Sector, HSR Layout",Done,Bommanahalli,
+127,BW037,41.82,137.20,Nov 29 2025 1:54PM,12.9145717,77.5985567,"Sukhdev Park, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+128,BW030-1,19.35,63.48,Nov 29 2025 11:22AM,12.92479,77.5952717,"28th Main Rd, 4th T Block East, Jayanagar",Done,Bommanahalli,
+129,BW-A-007,6.00,19.69,Nov 28 2025 12:46PM,12.9026833,77.5358767,"Poorna Prajna Housing Society Park No 17,Purnapragnya Layout, Poornapragna",Done,Bommanahalli,
+130,BW-A-012,10.35,33.96,Nov 28 2025 12:30PM,12.906615,77.538345,"Poornapragna park 2, Poornapragna Housing Society Layout",Done,Bommanahalli,
+131,BW-A-015,31.45,103.18,Nov 28 2025 12:02PM,12.9074817,77.5326917,"5th main road, Vaddara Palya, Kodipur, Poornapragna Layout",Done,Bommanahalli,
+132,BW-A-003,39.12,128.35,Nov 28 2025 11:35AM,12.9059317,77.53196,"58, 5th Main Rd, Vaddara Palya, Poornapragna Housing Society Layout",Done,Bommanahalli,
+133,G2D,6.77,22.21,Dec 14 2025 10:52AM,13.10453393,77.55518883,"Veerasagara,Attur main road",Done,Hebbal,BBMP BORE WELL
+134,G3C,7.06,23.16,Dec 14 2025 11:16AM,13.10470292,77.57699498,"Atturu Yelahanka 4 th phase, 1st main road, Near Sumahan engineering coaching class",Done,Hebbal,BBMP BORE WELL
+135,G3D-1,12.53,41.11,Dec 14 2025 12:30PM,13.0958367,77.5780833,"LIG 3 rd phase, Near Yelahanka satellite town busstand, Post office roadYelahanka Satellite town",Done,Hebbal,
+136,G2E,56.07,183.96,Dec 14 2025 1:17PM,13.0870817,77.5542583,"M.S.Palaya,Abbasia colony",Done,Hebbal,ABANDONED BORE WELL
+137,G2EN,18.20,59.71,Dec 14 2025 1:27PM,13.08601379,77.54837833,"M.S.Palaya,Abbasia colony 4 TH CROSS",Done,Hebbal,ABANDONED BORE WELL
+138,225,10.85,35.60,Dec 14 2025 12:42PM,13.098901,77.572748,"1st Main Rd, Self Financed Society 208 Colony, Yelahanka New Town",Done,Hebbal,
+139,224,43.73,143.47,Dec 14 2025 1:10PM,13.091902,77.558181,"Bettahalli Layout, Adityanagar, Vidyaranyapura",Done,Hebbal,
+140,G11B,42.49,139.40,Dec 14 2025 2:53PM,13.00932054,77.54574434,"Mahalaxmipuram, Near Sri prasanna Veeranjaneya swamy, 6th main,11th cross road",Done,Vrishabhavathi,BBMP BORE WELL
+141,G12C,26.46,86.81,Dec 14 2025 4:52PM,12.98976627,77.58849276,"Hanuman temple, Palace cross road",Done,Vrishabhavathi,PUBLIC BORE WELL
+142,G18B,60.53,198.59,Dec 16 2025 11:07AM,13.00937,77.5458017,"S.J.Park, K.R.Market",Done,Vrishabhavathi,ABANDONED BORE WELL
+143,BW043,24.61,80.74,Dec 15 2025 5:06PM,12.9178898,77.6504301,"5, 10th Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+144,BW026,9.05,29.69,Dec 16 2025 4:03PM,12.9091828,77.5879866,"Dhanvanthari Park,  Phase 2, 2nd Phase, J. P. Nagar",Done,Bommanahalli,
+145,BW027,41.07,134.74,Dec 16 2025 1:29PM,12.921,77.5896389,"18th Main Rd, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+146,BW029,8.64,28.35,Dec 16 2025 1:40PM,12.924972,77.59025,"35th Cross Rd, T Block, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+147,BW034,5.75,18.86,Dec 16 2025 12:50PM,12.9253057,77.5806544,"5th Main Rd, 4th Block, Jayanagar",Done,Bommanahalli,
+148,BW036,78.05,256.07,Dec 16 2025 3:07PM,12.9120531,77.5986893,"43b, 1st Main Rd, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+149,BW046,32.67,107.19,Dec 16 2025 12:20PM,12.93570521,77.58051786,"5th Main Rd, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar",Done,Bommanahalli,
+150,G24E,54.98,180.38,Dec 16 2025 3:45PM,12.909,77.595,"J.P.nagar Park,8th main road, 11th cross",Done,Bommanahalli,BBMP BORE WELL
+151,G24F,11.40,37.40,Dec 15 2025 2:10PM,12.892,77.605,"Bilekhalli park, 6th cross road",Done,Bommanahalli,BBMP BORE WELL
+152,G24G,26.54,87.07,Dec 16 2025 4:25PM,12.901,77.582,"Puttenahalli main road, near Jaraganahalli( Sarakki ) lake",Done,Bommanahalli,ABANDONED BORE WELL
+153,G25A,10.40,34.12,Dec 15 2025 6:02PM,12.921,77.619,"Madivala, VP road,2nd cross",Done,Bommanahalli,BBMP BORE WELL
+154,G25C,9.69,31.79,Dec 15 2025 4:12PM,12.911,77.645,"HSR layout,Stedium 19th main road 19th cross",Done,Bommanahalli,BBMP BORE WELL
+155,G25E,30.45,99.90,Dec 15 2025 2:59PM,12.907,77.636,"Mangammanapalya, 27th cross road",Done,Bommanahalli,BBMP BORE WELL
+156,G26BN,10.85,35.60,Dec 15 2025 5:32PM,12.923,77.666,IBLUR,Done,Bommanahalli,BBMP BORE WELL
+157,G27C,85.95,281.99,Dec 15 2025 12:59PM,12.864,77.591,"Gottigere,Bannerghatta main road, Kalena Agrahara, Near Himagiri meadows Busstop",Done,Bommanahalli,BBMP BORE WELL
+158,G27D,18.99,62.30,Dec 15 2025 1:46PM,12.883,77.604,"Arakere park, Near Shanthiniketan layout bus stop,B main road",Done,Bommanahalli,BBMP BORE WELL
+159,G27E,13.42,44.03,Dec 15 2025 11:28AM,12.883,77.573,"Srinidhi layout, 1st main road 7th cross, Konanakunte",Done,Bommanahalli,BBMP BORE WELL
+160,G28E,,,,12.873,77.626,"Begur, 6th cross","Not Done,  Due to the society’s asset (FARM HOUSE)Borewell point. Owners went outstation last 4 days back.",Bommanahalli,BBMP BORE WELL
+161,BW061,3.98,13.06,Dec 14 2025 4:15PM,12.9095884,77.5881775,"Brigade Gateway Campus, Dr Rajkumar Rd, Malleshwaram",Done,Bommanahalli,
+162,BW073,8.85,29.04,Dec 14 2025 4:02PM,12.9095911,77.5881728,"Mariyappanapalya Park, 82, 6th Main Rd, Mariappanapalya, Rajajinagar",Done,Vrishabhavathi,
+163,BW074,13.72,45.01,Dec 14 2025 3:21PM,12.8726278,77.6259965,"Motappa Park, 1st Main Rd, Manjunath Nagar, Basaveshwar Nagar",Done,Vrishabhavathi,
+164,BW049,5.72,18.77,Dec 14 2025 3:35PM,12.8726294,77.6259942,"1st main road, Rajaji Nagar Industrial Town, Rajajinagar",Done,Vrishabhavathi,
+165,BW080,15.93,52.26,Dec 14 2025 3:48PM,12.8726496,77.6259929,"Children's Playing Park, 805, 3rd Main Rd, 4th Block, Rajajinagar",Done,Vrishabhavathi,
+166,BW066,4.26,13.98,Dec 14 2025 4:26PM,13.0028833,77.5700417,"5th Main Rd, Sadashiva Nagar, Armane Nagar",Done,Vrishabhavathi,
+167,BW109,23.93,78.51,Dec 14 2025 12:53PM,12.9980733,77.5563233,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+168,BW105,14.97,49.11,Dec 14 2025 1:00PM,12.9980663,77.556313,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+169,BW091,6.80,22.31,Dec 14 2025 12:07PM,12.99809,77.556355,"MIG Sector B, Udaya Layout, Yelahanka",Done,Hebbal,
+170,BW096,67.57,221.69,Dec 14 2025 11:39AM,12.9980777,77.556351,"Ganesha Park, 10th A Cross Rd, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+171,BW095,6.17,20.24,Dec 14 2025 11:32AM,12.998115,77.5563067,"Rajiv Gandhi Park, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+172,BW042,13.55,44.46,Dec 15 2025 4:55PM,12.9166289,77.64811,"Hemavathi Park,11th A Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+173,BW044,9.40,30.84,Dec 15 2025 5:15PM,12.91725,77.6530467,"11th Cross, 29th Main Road, Main gate, opposite Nethravathi Park, 1st Sector, HSR Layout",Done,Bommanahalli,
+174,BW037,42.31,138.81,Dec 16 2025 2:47PM,12.9145717,77.5985567,"Sukhdev Park, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+175,BW030-1,4.20,13.78,Dec 16 2025 2:25PM,12.92479,77.5952717,"28th Main Rd, 4th T Block East, Jayanagar",Done,Bommanahalli,
+176,BW-A-007,7.40,24.28,Dec 15 2025 10:47AM,12.9026833,77.5358767,"Poorna Prajna Housing Society Park No 17,Purnapragnya Layout, Poornapragna",Done,Bommanahalli,
+177,BW-A-012,11.54,37.86,Dec 15 2025 10:35AM,12.906615,77.538345,"Poornapragna park 2, Poornapragna Housing Society Layout",Done,Bommanahalli,
+178,BW-A-003,42.62,139.83,Dec 15 2025 10:06AM,12.9059317,77.53196,"58, 5th Main Rd, Vaddara Palya, Poornapragna Housing Society Layout",Done,Bommanahalli,
+179,BW-A-015-1,32.83,107.71,Dec 15 2025 10:17AM,12.9075193,77.5326636,"5th main road, Vaddara Palya, Kodipur, Poornapragna Layout",Done,Bommanahalli,
+180,G2D,7.10,23.29,Dec 30 2025 10:21AM,13.10453393,77.55518883,"Veerasagara,Attur main road",Done,Hebbal,BBMP BORE WELL
+181,G3C,4.50,14.76,"30 Dec 2025, 05:48PM",13.10470292,77.57699498,"Atturu Yelahanka 4 th phase, 1st main road, Near Sumahan engineering coaching class",Done,Hebbal,BBMP BORE WELL
+182,G3D-1,11.49,37.70,Dec 30 2025 11:03AM,13.0958767,77.5780767,"18th B Cross Rd, LIG 3rd Stage, Udaya Layout, Yelahanka New Town, Bengaluru-560064",,Hebbal,
+183,G2E,53.97,177.07,Dec 30 2025 12:01PM,13.08738762,77.55441867,"M.S.Palaya,Abbasia colony",Done,Hebbal,ABANDONED BORE WELL
+184,G2EN,20.66,67.78,Dec 30 2025 12:12PM,13.08601379,77.54837833,"M.S.Palaya,Abbasia colony 4 TH CROSS",Done,Hebbal,ABANDONED BORE WELL
+185,225,10.97,35.99,"30 Dec 2025, 11:23AM",13.098901,77.572748,"1st Main Rd, Self Financed Society 208 Colony, Yelahanka New Town",Done,Hebbal,
+186,224,43.64,143.18,Dec 30 2025 11:53AM,13.091902,77.558181,"Bettahalli Layout, Adityanagar, Vidyaranyapura",Done,Hebbal,
+187,G11B,,,,13.00932054,77.54574434,"Mahalaxmipuram, Near Sri prasanna Veeranjaneya swamy, 6th main,11th cross road",Not Done. It seems the borewell is burried. And no another Borewell point near 200 mtr,Vrishabhavathi,BBMP BORE WELL
+188,G12C,24.48,80.31,Dec 30 2025 3:50PM,12.98976627,77.58849276,"Hanuman temple, Palace cross road",Done,Vrishabhavathi,PUBLIC BORE WELL
+189,G18B,63.80,209.32,"31 Dec 2025, 08:19AM",13.00937,77.5458017,"S.J.Park, K.R.Market",Done,Vrishabhavathi,ABANDONED BORE WELL
+190,BW043,35.92,117.85,"29 Dec 2025, 01:35PM",12.9178898,77.6504301,"5, 10th Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+191,BW026,10.33,33.89,"31 Dec 2025, 11.40AM",12.9091828,77.5879866,"Dhanvanthari Park,  Phase 2, 2nd Phase, J. P. Nagar",Done,Bommanahalli,
+192,BW027,9.37,30.74,"31 Dec 2025, 09:28AM",12.921,77.5896389,"18th Main Rd, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+193,BW029,8.80,28.87,"31 Dec 2025, 09:37AM",12.924972,77.59025,"35th Cross Rd, T Block, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+194,BW034,6.69,21.95,"31 Dec 2025, 09:14AM",12.9253057,77.5806544,"5th Main Rd, 4th Block, Jayanagar",Done,Bommanahalli,
+195,BW036,56.91,186.71,"31 Dec 2025, 10:50AM",12.9120531,77.5986893,"43b, 1st Main Rd, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+196,BW046,23.44,76.90,"31 Dec 2025, 08:48AM",12.93570521,77.58051786,"5th Main Rd, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar",Done,Bommanahalli,
+197,G24E,50.90,166.99,"31 Dec 2025, 11:33AM",12.909,77.595,"J.P.nagar Park,8th main road, 11th cross",Done,Bommanahalli,BBMP BORE WELL
+198,G24F,9.97,32.71,Dec 29 2025 11:43AM,12.892,77.605,"Bilekhalli park, 6th cross road",Done,Bommanahalli,BBMP BORE WELL
+199,G24G,28.31,92.88,"31 Dec 2025, 12:04PM",12.901,77.582,"Puttenahalli main road, near Jaraganahalli( Sarakki ) lake",Done,Bommanahalli,ABANDONED BORE WELL
+200,G25A,31.15,102.20,"29 Dec 2025, 12:17PM",12.921,77.619,"Madivala, VP road,2nd cross",Done,Bommanahalli,BBMP BORE WELL
+201,G25C,10.12,33.20,Dec 29 2025 2:12PM,12.911,77.645,"HSR layout,Stedium 19th main road 19th cross",Done,Bommanahalli,BBMP BORE WELL
+202,G25E,28.01,91.90,Dec 29 2025 2:27PM,12.907,77.636,"Mangammanapalya, 27th cross road",Done,Bommanahalli,BBMP BORE WELL
+203,G26BN,10.89,35.73,Dec 29 2025 12:51PM,12.923,77.666,IBLUR,Done,Bommanahalli,BBMP BORE WELL
+204,G27C,94.76,310.89,Dec 29 2025 10:55AM,12.864,77.591,"Gottigere,Bannerghatta main road, Kalena Agrahara, Near Himagiri meadows Busstop",Done,Bommanahalli,BBMP BORE WELL
+205,G27D,18.65,61.19,Dec 29 2025 11:28AM,12.883,77.604,"Arakere park, Near Shanthiniketan layout bus stop,B main road",Done,Bommanahalli,BBMP BORE WELL
+206,G27E,9.27,30.41,"29 Dec 2025, 10:13AM",12.883,77.573,"Srinidhi layout, 1st main road 7th cross, Konanakunte",Done,Bommanahalli,BBMP BORE WELL
+207,G28E,20.51,67.29,Dec 29 2025 3:21PM,12.873,77.626,"Begur, 6th cross",Done,Bommanahalli,BBMP BORE WELL
+208,BW061,61.37,201.35,Dec 30 2025 03:11PM,12.9095884,77.5881775,"Brigade Gateway Campus, Dr Rajkumar Rd, Malleshwaram",Done,Bommanahalli,
+209,BW073,4.25,13.94,Dec 30 2025 02:46PM,12.9095911,77.5881728,"Mariyappanapalya Park, 82, 6th Main Rd, Mariappanapalya, Rajajinagar",Done,Vrishabhavathi,
+210,BW074,13.81,45.31,"30 Dec 2025, 02:09PM",12.8726278,77.6259965,"Motappa Park, 1st Main Rd, Manjunath Nagar, Basaveshwar Nagar",Done,Vrishabhavathi,
+211,BW049,6.46,21.19,Dec 30 2025 02:23PM,12.8726294,77.6259942,"1st main road, Rajaji Nagar Industrial Town, Rajajinagar",Done,Vrishabhavathi,
+212,BW080,16.17,53.05,Dec 30 2025 02:35PM,12.8726496,77.6259929,"Children's Playing Park, 805, 3rd Main Rd, 4th Block, Rajajinagar",Done,Vrishabhavathi,
+213,BW066,4.63,15.19,"30 Dec 2025, 03:27PM",13.0028833,77.5700417,"5th Main Rd, Sadashiva Nagar, Armane Nagar",Done,Vrishabhavathi,
+214,BW109,49.56,162.60,"30 Dec 2025, 11:40AM",12.9980733,77.5563233,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+215,BW105,18.08,59.32,Dec 30 2025 11:45AM,12.9980663,77.556313,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+216,BW091,7.84,25.72,Dec 30 2025 11:09AM,12.99809,77.556355,"MIG Sector B, Udaya Layout, Yelahanka",Done,Hebbal,
+217,BW096,51.02,167.39,"30 Dec 2025, 10:43AM",12.9980777,77.556351,"Ganesha Park, 10th A Cross Rd, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+218,BW095,6.58,21.59,"30 Dec 2025, 10:54AM",12.998115,77.5563067,"Rajiv Gandhi Park, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+219,BW042,12.79,41.96,Dec 29 2025 01:52PM,12.9166289,77.64811,"Hemavathi Park,11th A Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+220,BW044,58.14,190.75,"29 Dec 2025, 01:15PM",12.91725,77.6530467,"11th Cross, 29th Main Road, Main gate, opposite Nethravathi Park, 1st Sector, HSR Layout",Done,Bommanahalli,
+221,BW037,19.30,63.32,"31 Dec 2025, 10:32AM",12.9145717,77.5985567,"Sukhdev Park, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+222,BW030-1,17.70,58.07,"31 Dec 2025, 09:51AM",12.92479,77.5952717,"28th Main Rd, 4th T Block East, Jayanagar",Done,Bommanahalli,
+223,BW-A-007,6.09,19.98,"31 Dec 2025, 12:45PM",12.9026833,77.5358767,"Poorna Prajna Housing Society Park No 17,Purnapragnya Layout, Poornapragna",Done,Bommanahalli,
+224,BW-A-012,12.46,40.88,Dec 29 2025 04:47PM,12.906615,77.538345,"Poornapragna park 2, Poornapragna Housing Society Layout",Done,Bommanahalli,
+225,BW-A-003,41.95,137.63,"29 Dec 2025, 05:14PM",12.9059317,77.53196,"58, 5th Main Rd, Vaddara Palya, Poornapragna Housing Society Layout",Done,Bommanahalli,
+226,BW-A-015-1,34.41,112.89,Dec 29 2025 05:20PM,12.90687108,77.53273513,"5th main road, Vaddara Palya, Kodipur, Poornapragna Layout",Done,Bommanahalli,
+227,,,,,,,,,,
+228,G2D,7.38,24.21,"14 Jan 2026, 09:36 AM",13.10453393,77.55518883,"Veerasagara,Attur main road",Done,Hebbal,BBMP BORE WELL
+229,G3C,57.26,187.86,"15 Jan 2026, 09:10 AM",13.10470292,77.57699498,"Atturu Yelahanka 4 th phase, 1st main road, Near Sumahan engineering coaching class",Done,Hebbal,BBMP BORE WELL
+230,G2E,82.83,271.75,"14 Jan 2026, 11:18 AM",13.08738762,77.55441867,"M.S.Palaya,Abbasia colony",Done,Hebbal,ABANDONED BORE WELL
+231,G2EN,17.46,57.28,"14 Jan 2026, 11:24 AM",13.08601379,77.54837833,"M.S.Palaya,Abbasia colony 4 TH CROSS",Done,Hebbal,ABANDONED BORE WELL
+232,G3D-1,11.98,39.30,"14 Jan 2026, 10:15 AM",13.0958767,77.5780767,"LIG 3 rd phase, Near Yelahanka satellite town busstand, Post office roadYelahanka Satellite town",Done,Hebbal,
+233,225,12.92,42.39,"14 Jan 2026, 10:32 AM",13.098901,77.572748,"1st Main Rd, Self Financed Society 208 Colony, Yelahanka New Town",Done,Hebbal,
+234,224,68.73,225.49,"14 Jan 2026, 11:10 AM",13.091902,77.558181,"Bettahalli Layout, Adityanagar, Vidyaranyapura",Done,Hebbal,
+235,G11B,49.16,161.29,"15 Jan 2026, 02:33 PM",13.00932054,77.54574434,"Mahalaxmipuram, Near Sri prasanna Veeranjaneya swamy, 6th main,11th cross road",Done,Vrishabhavathi,BBMP BORE WELL
+236,G12C,11.26,36.94,"15 Jan 2026, 12:55 PM",12.98976627,77.58849276,"Hanuman temple, Palace cross road",Done,Vrishabhavathi,PUBLIC BORE WELL
+237,G18B,63.83,209.42,"14 Jan 2026, 08:56 AM",13.00937,77.5458017,"S.J.Park, K.R.Market",Done,Vrishabhavathi,ABANDONED BORE WELL
+238,BW043,27.35,89.73,"13 Jan 2026, 01:42 PM",12.9178898,77.6504301,"5, 10th Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+239,BW026,12.40,40.68,"14 Jan 2026, 12:57 PM",12.9091828,77.5879866,"Dhanvanthari Park,  Phase 2, 2nd Phase, J. P. Nagar",Done,Bommanahalli,
+240,BW027,10.04,32.94,"14 Jan 2026, 10:25 AM",12.921,77.5896389,"18th Main Rd, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+241,BW029,10.11,33.17,"14 Jan 2026, 10:34 AM",12.924972,77.59025,"35th Cross Rd, T Block, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+242,BW034,6.54,21.46,"14 Jan 2026, 10:11 AM",12.9253057,77.5806544,"5th Main Rd, 4th Block, Jayanagar",Done,Bommanahalli,
+243,BW036,82.89,271.95,"14 Jan 2026, 12:08 PM",12.9120531,77.5986893,"43b, 1st Main Rd, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+244,BW046,27.12,88.98,"14 Jan 2026, 09:39 AM",12.93570521,77.58051786,"5th Main Rd, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar",Done,Bommanahalli,
+245,G24E,55.35,181.59,"14 Jan 2026, 12:38 PM",12.909,77.595,"J.P.nagar Park,8th main road, 11th cross",Done,Bommanahalli,BBMP BORE WELL
+246,G24F,11.64,38.19,"13 Jan 2026, 11:20 AM",12.892,77.605,"Bilekhalli park, 6th cross road",Done,Bommanahalli,BBMP BORE WELL
+247,G24G,33.10,108.60,"14 Jan 2026, 01:11 PM",12.901,77.582,"Puttenahalli main road, near Jaraganahalli( Sarakki ) lake",Done,Bommanahalli,ABANDONED BORE WELL
+248,G25A,51.60,169.29,"13 Jan 2026, 12:04 PM",12.921,77.619,"Madivala, VP road,2nd cross",Done,Bommanahalli,BBMP BORE WELL
+249,G25C,10.15,33.30,"13 Jan 2026, 02:10 PM",12.911,77.645,"HSR layout,Stedium 19th main road 19th cross",Done,Bommanahalli,BBMP BORE WELL
+250,G25E,37.09,121.69,"13 Jan 2026, 02:35 PM",12.907,77.636,"Mangammanapalya, 27th cross road",Done,Bommanahalli,BBMP BORE WELL
+251,G26BN,10.89,35.73,"13 Jan 2026, 01:00 PM",12.923,77.666,IBLUR,Done,Bommanahalli,BBMP BORE WELL
+252,G27C,36.39,119.39,"13 Jan 2026, 10:28 AM",12.864,77.591,"Gottigere,Bannerghatta main road, Kalena Agrahara, Near Himagiri meadows Busstop",Done,Bommanahalli,BBMP BORE WELL
+253,G27D,19.29,63.29,"13 Jan 2026, 11:08 AM",12.883,77.604,"Arakere park, Near Shanthiniketan layout bus stop,B main road",Done,Bommanahalli,BBMP BORE WELL
+254,G27E,14.67,48.13,"13 Jan 2026, 09:59 AM",12.883,77.573,"Srinidhi layout, 1st main road 7th cross, Konanakunte",Done,Bommanahalli,BBMP BORE WELL
+255,G28E,20.66,67.78,"13 Jan 2026, 03:03 PM",12.873,77.626,"Begur, 6th cross",Done,Bommanahalli,BBMP BORE WELL
+256,BW061,2.91,9.55,"15 Jan 2026, 12:03 PM",12.9095884,77.5881775,"Brigade Gateway Campus, Dr Rajkumar Rd, Malleshwaram",Done,Bommanahalli,
+257,BW073,7.48,24.54,"15 Jan 2026, 02:14 PM",12.9095911,77.5881728,"Mariyappanapalya Park, 82, 6th Main Rd, Mariappanapalya, Rajajinagar",Done,Vrishabhavathi,
+258,BW074,15.42,50.59,"15 Jan 2026, 02:01 PM",12.8726278,77.6259965,"Motappa Park, 1st Main Rd, Manjunath Nagar, Basaveshwar Nagar",Done,Vrishabhavathi,
+259,BW049,6.52,21.39,"15 Jan 2026, 01:40 PM",12.8726294,77.6259942,"1st main road, Rajaji Nagar Industrial Town, Rajajinagar",Done,Vrishabhavathi,
+260,BW080,16.48,54.07,"15 Jan 2026, 01:26 PM",12.8726496,77.6259929,"Children's Playing Park, 805, 3rd Main Rd, 4th Block, Rajajinagar",Done,Vrishabhavathi,
+261,BW066,4.81,15.78,"15 Jan 2026, 12:32 PM",13.0028833,77.5700417,"5th Main Rd, Sadashiva Nagar, Armane Nagar",Done,Vrishabhavathi,
+262,BW109,44.35,145.51,"14 Jan 2026, 10:48 AM",12.9980733,77.5563233,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+263,BW105,15.52,50.92,"14 Jan 2026, 10:55 AM",12.9980663,77.556313,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+264,BW091,5.67,18.60,"14 Jan 2026, 10:21 AM",12.99809,77.556355,"MIG Sector B, Udaya Layout, Yelahanka",Done,Hebbal,
+265,BW096,64.64,212.07,"14 Jan 2026, 09:55 AM",12.9980777,77.556351,"Ganesha Park, 10th A Cross Rd, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+266,BW095,6.66,21.85,"14 Jan 2026, 10:04 AM",12.998115,77.5563067,"Rajiv Gandhi Park, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+267,BW042,25.32,83.07,"13 Jan 2026, 01:30 PM",12.9166289,77.64811,"Hemavathi Park,11th A Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+268,BW044,11.56,37.93,"13 Jan 2026, 01:56 PM",12.91725,77.6530467,"11th Cross, 29th Main Road, Main gate, opposite Nethravathi Park, 1st Sector, HSR Layout",Done,Bommanahalli,
+269,BW037,20.48,67.19,"14 Jan 2026, 11:47 AM",12.9145717,77.5985567,"Sukhdev Park, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+270,BW030-1,66.74,218.96,"14 Jan 2026, 10:50 AM",12.92479,77.5952717,"28th Main Rd, 4th T Block East, Jayanagar",Done,Bommanahalli,
+271,BW-A-012,13.65,44.78,"13 Jan 2026, 09:12 AM",12.906615,77.538345,"Poornapragna park 2, Poornapragna Housing Society Layout",Done,Bommanahalli,
+272,BW-A-003,41.37,135.73,"13 Jan 2026, 08:45 AM",12.9059317,77.53196,"58, 5th Main Rd, Vaddara Palya, Poornapragna Housing Society Layout",Done,Bommanahalli,
+273,BW-A-015-1,35.11,115.19,"13 Jan 2026, 08:51 AM",12.9075193,77.5326636,"5th main road, Vaddara Palya, Kodipur, Poornapragna Layout",Done,Bommanahalli,
+274,BW030-1-A,20.63,67.68,"14 Jan 2026, 11:22 PM",12.9253183,77.595405,"34th C Cross Rd, near vishnuvardhan park, near bangalore one, 4th T Block East, Jayanagar",Done,Bommanahalli,
+275,G2D,7.65,25.10,"29 Jan 2026, 03:48 PM",13.10453393,77.55518883,"Veerasagara,Attur main road",Done,Hebbal,BBMP BORE WELL
+276,G3C,3.67,12.04,"29 Jan 2026, 03:36 PM",13.10470292,77.57699498,"Atturu Yelahanka 4 th phase, 1st main road, Near Sumahan engineering coaching class",Done,Hebbal,BBMP BORE WELL
+277,G3D-1,15.21,49.90,"29 Jan 2026, 03:05 PM",13.0958717,77.57806,"LIG 3 rd phase, Near Yelahanka satellite town busstand, Post office roadYelahanka Satellite town",Done,Hebbal,
+278,G2E,89.54,293.77,"29 Jan 2026, 02:16 PM",13.08738762,77.55441867,"M.S.Palaya,Abbasia colony",Done,Hebbal,ABANDONED BORE WELL
+279,G2EN,19.23,63.09,"29 Jan 2026, 02:10 PM",13.08601379,77.54837833,"M.S.Palaya,Abbasia colony 4 TH CROSS",Done,Hebbal,ABANDONED BORE WELL
+280,225,12.40,40.68,"29 Jan 2026, 02:50 PM",13.098901,77.572748,"1st Main Rd, Self Financed Society 208 Colony, Yelahanka New Town",Done,Hebbal,
+281,224,75.49,247.67,"29 Jan 2026, 02:23 PM",13.091902,77.558181,"Bettahalli Layout, Adityanagar, Vidyaranyapura",Done,Hebbal,
+282,G11B,87.69,287.70,"30 Jan 2026, 01:43 PM",13.00932054,77.54574434,"Mahalaxmipuram, Near Sri prasanna Veeranjaneya swamy, 6th main,11th cross road",Done,Vrishabhavathi,BBMP BORE WELL
+283,G12C,21.50,70.54,"30 Jan 2026, 02:47 PM",12.98976627,77.58849276,"Hanuman temple, Palace cross road",Done,Vrishabhavathi,PUBLIC BORE WELL
+284,G18B,74.44,244.23,"29 Jan 2026, 12:44 PM",13.00937,77.5458017,"S.J.Park, K.R.Market",Done,Vrishabhavathi,ABANDONED BORE WELL
+285,BW043,33.97,111.45,"28 Jan 2026, 04:32 PM",12.9178898,77.6504301,"5, 10th Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+286,BW026,10.27,33.69,"28 Jan 2026, 12:16 PM",12.9091828,77.5879866,"Dhanvanthari Park,  Phase 2, 2nd Phase, J. P. Nagar",Done,Bommanahalli,
+287,BW027,13.27,43.54,"28 Jan 2026, 01:52 PM",12.921,77.5896389,"18th Main Rd, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+288,BW029,9.32,30.58,"28 Jan 2026, 01:42 PM",12.924972,77.59025,"35th Cross Rd, T Block, 4th T Block East, Pattabhirama Nagar, Jayanagar",Done,Bommanahalli,
+289,BW034,5.62,18.44,"28 Jan 2026, 02:22 PM",12.9253057,77.5806544,"5th Main Rd, 4th Block, Jayanagar",Done,Bommanahalli,
+290,BW036,55.68,182.68,"28 Jan 2026, 12:59 PM",12.9120531,77.5986893,"43b, 1st Main Rd, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+291,BW046,28.83,94.59,"28 Jan 2026, 02:37 PM",12.93570521,77.58051786,"5th Main Rd, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar",Done,Bommanahalli,
+292,G24E,65.16,213.78,"28 Jan 2026, 12:48 PM",12.909,77.595,"J.P.nagar Park,8th main road, 11th cross",Done,Bommanahalli,BBMP BORE WELL
+293,G24F,12.25,40.19,"30 Jan 2026, 10:29 AM",12.892,77.605,"Bilekhalli park, 6th cross road",Done,Bommanahalli,BBMP BORE WELL
+294,G24G,31.85,104.49,"28 Jan 2026, 11:52 AM",12.93570521,77.58051786,"Puttenahalli main road, near Jaraganahalli( Sarakki ) lake",Done,Bommanahalli,ABANDONED BORE WELL
+295,G25A,9.09,29.82,"28 Jan 2026, 03:14 PM",12.921,77.619,"Madivala, VP road,2nd cross",Done,Bommanahalli,BBMP BORE WELL
+296,G25C,22.22,72.90,"28 Jan 2026, 04:07 PM",12.911,77.645,"HSR layout,Stedium 19th main road 19th cross",Done,Bommanahalli,BBMP BORE WELL
+297,G25E,33.56,110.10,"28 Jan 2026, 03:33 PM",12.907,77.636,"Mangammanapalya, 27th cross road",Done,Bommanahalli,BBMP BORE WELL
+298,G26BN,11.13,36.52,"28 Jan 2026, 05:03 PM",12.923,77.666,IBLUR,Done,Bommanahalli,BBMP BORE WELL
+299,G27C,36.88,121.00,"30 Jan 2026, 12:28 PM",12.864,77.591,"Gottigere,Bannerghatta main road, Kalena Agrahara, Near Himagiri meadows Busstop",Done,Bommanahalli,BBMP BORE WELL
+300,G27D,19.48,63.91,"30 Jan 2026, 10:45 AM",12.883,77.604,"Arakere park, Near Shanthiniketan layout bus stop,B main road",Done,Bommanahalli,BBMP BORE WELL
+301,G27E,12.72,41.73,"29 Jan 2026, 05:21 PM",12.883,77.573,"Srinidhi layout, 1st main road 7th cross, Konanakunte",Done,Bommanahalli,BBMP BORE WELL
+302,G28E,20.51,67.29,"30 Jan 2026, 11:47 AM",12.873,77.626,"Begur, 6th cross",Done,Bommanahalli,BBMP BORE WELL
+303,BW061,4.10,13.45,"30 Jan 2026, 03:12 PM",12.9095884,77.5881775,"Brigade Gateway Campus, Dr Rajkumar Rd, Malleshwaram",Done,Bommanahalli,
+304,BW073,8.85,29.04,"30 Jan 2026, 03:25 PM",12.9095911,77.5881728,"Mariyappanapalya Park, 82, 6th Main Rd, Mariappanapalya, Rajajinagar",Done,Vrishabhavathi,
+305,BW074,16.22,53.22,"30 Jan 2026, 02:03 PM",12.8726278,77.6259965,"Motappa Park, 1st Main Rd, Manjunath Nagar, Basaveshwar Nagar",Done,Vrishabhavathi,
+306,BW049,6.49,21.29,"30 Jan 2026, 02:15 PM",12.8726294,77.6259942,"1st main road, Rajaji Nagar Industrial Town, Rajajinagar",Done,Vrishabhavathi,
+307,BW080,16.05,52.66,"30 Jan 2026, 02:25 PM",12.8726496,77.6259929,"Children's Playing Park, 805, 3rd Main Rd, 4th Block, Rajajinagar",Done,Vrishabhavathi,
+308,BW066,5.85,19.19,"30 Jan 2026, 03:02 PM",13.0028833,77.5700417,"5th Main Rd, Sadashiva Nagar, Armane Nagar",Done,Vrishabhavathi,
+309,BW109,25.06,82.22,"29 Jan 2026, 02:30 PM",12.9980733,77.5563233,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+310,BW105,20.15,66.11,"29 Jan 2026, 02:35 PM",12.9980663,77.556313,"College of Horticulture, UHS (B) Campus, Post, Vignana Kendra",Done,Hebbal,
+311,BW091,5.82,19.09,"29 Jan 2026, 02:58 PM",12.99809,77.556355,"MIG Sector B, Udaya Layout, Yelahanka",Done,Hebbal,
+312,BW096,21.58,70.80,"29 Jan 2026, 03:20 PM",12.9980777,77.556351,"Ganesha Park, 10th A Cross Rd, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+313,BW095,6.81,22.34,"29 Jan 2026, 03:15 PM",12.998115,77.5563067,"Rajiv Gandhi Park, Yelahanka Satellite Town, Yelahanka New Town",Done,Hebbal,
+314,BW042,18.00,59.06,"28 Jan 2026, 04:21 PM",12.9166289,77.64811,"Hemavathi Park,11th A Cross Rd, 1st Sector, HSR Layout",Done,Bommanahalli,
+315,BW044,66.09,216.83,"28 Jan 2026, 04:48 PM",12.91725,77.6530467,"11th Cross, 29th Main Road, Main gate, opposite Nethravathi Park, 1st Sector, HSR Layout",Done,Bommanahalli,
+316,BW037,73.55,241.31,"28 Jan 2026, 01:11 PM",12.9145717,77.5985567,"Sukhdev Park, 3rd Phase, J. P. Nagar",Done,Bommanahalli,
+317,BW-A-007,26.29,86.25,"29 Jan 2026, 04:01 PM",12.9026833,77.5358767,"Poorna Prajna Housing Society Park No 17,Purnapragnya Layout, Poornapragna",Done,Bommanahalli,
+318,BW-A-012,15.29,50.16,"29 Jan 2026, 03:45 PM",12.906615,77.538345,"Poornapragna park 2, Poornapragna Housing Society Layout",Done,Bommanahalli,
+319,BW-A-003,43.66,143.24,"29 Jan 2026, 03:14 PM",12.9059317,77.53196,"58, 5th Main Rd, Vaddara Palya, Poornapragna Housing Society Layout",Done,Bommanahalli,
+320,BW-A-015-1,36.52,119.82,"29 Jan 2026, 03:24 PM",12.9075193,77.5326636,"5th main road, Vaddara Palya, Kodipur, Poornapragna Layout",Done,Bommanahalli,
+321,BW030-1-A,22.73,74.57,"28 Jan 2026, 01:33 PM",12.92539,77.5955417,"34th C Cross Rd, near vishnuvardhan park, near bangalore one, 4th T Block East, Jayanagar",Done,Bommanahalli,
