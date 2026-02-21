@@ -264,6 +264,7 @@
     #legend details[open] #legendBody { margin-top: 8px; }
     .legend-item { display: flex; align-items: center; gap: 8px; margin: 5px 0; }
     .legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid #fff; box-shadow: 0 0 1px rgba(0,0,0,.6); }
+    .legend-diamond { border-radius: 2px; transform: rotate(45deg); }
     .error {
       background: #fee2e2;
       border: 1px solid #fca5a5;
@@ -342,6 +343,12 @@
         <select id="monthFilter">
           <option value="ALL">All months</option>
         </select>
+        <label for="layerModeFilter" class="label" style="margin-top:10px;">Map layers</label>
+        <select id="layerModeFilter">
+          <option value="BOTH">Percolation + Borewells</option>
+          <option value="PERC_ONLY">Percolation only</option>
+          <option value="BORE_ONLY">Borewell only</option>
+        </select>
         <div class="btn-row" style="margin-top:8px;">
           <button id="clearFiltersBtn" type="button" class="btn">Clear filters</button>
         </div>
@@ -363,6 +370,10 @@
       <div class="card">
         <div class="value" style="margin-bottom:8px;">Rainfall-Recharge Relation</div>
         <div id="impactWriteup" class="hint">Correlation insight will appear after data loads.</div>
+      </div>
+      <div class="card">
+        <div class="value" style="margin-bottom:8px;">Borewell Signal</div>
+        <div id="borewellImpactWriteup" class="hint">Borewell interpretation will appear after data loads.</div>
       </div>
 
       <div class="card">
@@ -387,6 +398,9 @@
         <div class="legend-item"><span class="legend-dot" style="background:#dc2626"></span><span>Well: 0-2 ft</span></div>
         <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span><span>Well: 2-4 ft</span></div>
         <div class="legend-item"><span class="legend-dot" style="background:#60a5fa"></span><span>Well: 4+ ft</span></div>
+        <div class="legend-item"><span class="legend-dot legend-diamond" style="background:#16a34a"></span><span>Borewell depth: 0-30 ft</span></div>
+        <div class="legend-item"><span class="legend-dot legend-diamond" style="background:#f59e0b"></span><span>Borewell depth: 30-80 ft</span></div>
+        <div class="legend-item"><span class="legend-dot legend-diamond" style="background:#dc2626"></span><span>Borewell depth: 80+ ft</span></div>
       </div>
     </details>
   </div>
@@ -414,15 +428,16 @@
 
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-  <script src="interactive_map.js?v=20260221-3" defer></script>
+  <script src="interactive_map.js?v=20260221-5" defer></script>
   <script>
     setTimeout(() => {
       if (window.__UWBE_SCRIPT_STARTED__) return;
       const errBox = document.getElementById("err");
       if (!errBox) return;
       errBox.style.display = "block";
-      errBox.innerHTML = 'App script failed to load. Hard refresh with <code>Ctrl+Shift+R</code> and confirm <code>interactive_map.js</code> is served.';
+      errBox.innerHTML = 'App script failed to load. Hard refresh with <code>Ctrl+Shift+R</code> and confirm <code>interactive_map.js</code> is served next to this HTML file.';
     }, 3500);
   </script>
 </body>
 </html>
+
